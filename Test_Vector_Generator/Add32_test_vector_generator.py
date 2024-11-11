@@ -2,8 +2,8 @@ import random
 import os  
 
 # check if folder exists
-if not os.path.exists("Test_Vector"):
-    os.makedirs("Test_Vector")
+if not os.path.exists("../Test_Vector"):
+    os.makedirs("../Test_Vector")
 
 # check if file exists
 if os.path.exists(os.path.join("Test_Vector", "Add32_test_vector.txt")):

@@ -1,0 +1,49 @@
+# Simple ALU for course COMP2020 - computer organization
+
+## Description
+
+This is a simple ALU for course COMP2020 - computer organization. It is implemented in Verilog. The ALU supports the following operations:
+
+### Supported operations table
+
+| Op   | name                   | C                                      | V            |
+| ---- | ---------------------- | -------------------------------------- | ------------ |
+| 0100 | and                    | C = A & B                              | V = 0        |
+| 0101 | or                     | C = A \| B                             | V = 0        |
+| 000x | shift left logical     | C = B << Sa                            | V = 0        |
+| 1010 | xor                    | C = A ^ B                              | V = 0        |
+| 1011 | nor                    | C = ~(A \| B)                          | V = 0        |
+| 1100 | shift right logical    | C = B >>> Sa                           | V = 0        |
+| 1101 | shift right arithmetic | C = B >> Sa                            | V = 0        |
+| 1000 | ne                     | C = (A != B) ? 000...0001 : 000...0000 | V = 0        |
+| 1001 | eq                     | C = (A == B) ? 000...0001 : 000...0000 | V = 0        |
+| 1110 | le                     | C = (A ≤ 0) ? 000...0001 : 000...0000  | V = 0        |
+| 1111 | gt                     | C = (A > 0) ? 000...0001 : 000...0000  | V = 0        |
+| 011x | subtract               | C = A - B                              | V = overflow |
+| 001x | add                    | C = A + B                              | V = overflow |
+
+### Inputs and outputs
+
+#### ALU32
+
+- Operation (4 bits) - op: operation to be performed (0, 15)
+- A (32 bits) - a: input A
+- B (32 bits) - b: input B
+- Sa (5 bits) - sa: shift amount (0, 31)
+- C (32 bits) - c: output C
+- V (1 bit) - v: identify overflow or not (0 or 1)
+
+#### ADD32
+
+- A (32 bits) - a: input A
+- B (32 bits) - b: input B
+- Cin (1 bit) - cin: carry in bit
+- C (32 bits) - c: output C
+- V (1 bit) - v: identify overflow or not (0 or 1)
+
+#### Leftshift32
+
+- B (32 bits) - b: input B
+- Sa (5 bits) - sa: shift amount (0, 31)
+- Cin (1 bit) - cin: carry in
+- C (32 bits) - c: output C
