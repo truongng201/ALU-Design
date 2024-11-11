@@ -27,23 +27,23 @@ This is a simple ALU for course COMP2020 - computer organization. It is implemen
 #### ALU32
 
 - Operation (4 bits) - op: operation to be performed (0, 15)
-- A (32 bits) - a: input A
-- B (32 bits) - b: input B
-- Sa (5 bits) - sa: shift amount (0, 31)
-- C (32 bits) - c: output C
-- V (1 bit) - v: identify overflow or not (0 or 1)
+- A (32 bits) - input_a: input A
+- B (32 bits) - input_b: input B
+- Sa (5 bits) - input_sa: shift amount (0, 31)
+- C (32 bits) - output_c: output C
+- V (1 bit) - output_v: identify overflow or not (0 or 1)
 
 #### ADD32
 
-- A (32 bits) - a: input A
-- B (32 bits) - b: input B
-- Cin (1 bit) - cin: carry in bit
-- C (32 bits) - c: output C
-- V (1 bit) - v: identify overflow or not (0 or 1)
+- A (32 bits) - input_a: input A
+- B (32 bits) - input_b: input B
+- Cin (1 bit) - input_cin: carry in bit
+- C (32 bits) - output_c: output C
+- V (1 bit) - output_v: identify overflow or not (0 or 1)
 
 #### Leftshift32
 
-- B (32 bits) - b: input B
-- Sa (5 bits) - sa: shift amount (0, 31)
-- Cin (1 bit) - cin: carry in
-- C (32 bits) - c: output C
+- B (32 bits) - input_b: input B
+- Sa (5 bits) - input_sa: shift amount (0, 31)
+- Cin (1 bit) - input_cin: carry in
+- C (32 bits) - input_c: output C
