@@ -1,4 +1,4 @@
-class ALU:
+class ALU32:
     def __init__(self):
         self.result = 0
         self.blocks = []
