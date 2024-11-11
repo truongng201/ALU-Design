@@ -47,3 +47,23 @@ This is a simple ALU for course COMP2020 - computer organization. It is implemen
 - Sa (5 bits) - input_sa: shift amount (0, 31)
 - Cin (1 bit) - input_cin: carry in
 - C (32 bits) - input_c: output C
+
+## ALU Simulation
+
+### Description
+
+The ALU simulation is implemented in Python. The simulation reads the input from a file and writes the output to another file. The input file should contain the following information:
+
+- The first line contains the number of test cases
+- Each test case contains the following information:
+
+  - The operation to be performed (4 bits)
+  - The input A (32 bits)
+  - The input B (32 bits)
+  - The shift amount (5 bits)
+
+- The output file contains the following information:
+  - The output C (32 bits)
+  - The output V (1 bit)
+
+This ALU simulation is used to help you understand the ALU operation (if you don't :> ).

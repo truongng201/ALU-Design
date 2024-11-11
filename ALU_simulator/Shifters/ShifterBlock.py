@@ -1,0 +1,2 @@
+class ShifterBlock:
+    pass
