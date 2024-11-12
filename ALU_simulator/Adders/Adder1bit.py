@@ -14,7 +14,7 @@ class Adder1bit:
             raise TypeError("Adder1bit: Invalid type")
     
     
-    def get_s(self) -> str:
+    def get_output(self) -> str:
         if self.__s == None:
             raise ValueError("Adder1bit: Invalid operation")
         return str(self.__s)

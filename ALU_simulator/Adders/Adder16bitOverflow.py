@@ -14,7 +14,7 @@ class Adder16bitOverflow:
         self.__execute()
         
     
-    def get_s(self) -> str:
+    def get_output(self) -> str:
         if self.__s == None:
             raise ValueError("Adder16bitOverflow: Invalid operation")
         return str(self.__s)[::-1]
@@ -31,9 +31,9 @@ class Adder16bitOverflow:
             carry_in = self.__carry_in
             if i != 3:
                 adder = Adder4bit(a, b, carry_in)
-                self.__s += adder.get_s()[::-1]
+                self.__s += adder.get_output()[::-1]
                 self.__carry_in = adder.get_carry_out()
             else:
                 adder = Adder4bitOverflow(a, b, carry_in)
-                self.__s += adder.get_s()[::-1]
+                self.__s += adder.get_output()[::-1]
                 self.__overflow = int(adder.get_overflow())

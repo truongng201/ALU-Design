@@ -20,7 +20,7 @@ class Adder4bit:
                 raise TypeError("Adder4bit: Invalid type")
     
     
-    def get_s(self) -> str:
+    def get_output(self) -> str:
         if self.__s == None:
             raise ValueError("Adder4bit: Invalid operation")
         return str(self.__s)[::-1]
@@ -36,7 +36,7 @@ class Adder4bit:
             b = self.__b[i]
             carry_in = self.__carry_in
             adder = Adder1bit(a, b, carry_in)
-            self.__s += adder.get_s()
+            self.__s += adder.get_output()
             self.__carry_in = adder.get_carry_out()
         self.__carry_out = self.__carry_in
     

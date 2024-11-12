@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class AdderAbstract(ABC):
     @abstractmethod
-    def get_s(self) -> str:
+    def get_output(self) -> str:
         pass
     
     
@@ -24,7 +24,7 @@ class AdderAbstract(ABC):
 
 class AdderOverflowAbstract(ABC):
     @abstractmethod
-    def get_s(self) -> str:
+    def get_output(self) -> str:
         pass
     
     
