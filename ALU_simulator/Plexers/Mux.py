@@ -1,15 +1,19 @@
 class Mux:
-    def __init__(self, inputs: list[str], select_bit: str) -> None:
+    def __init__(self, inputs: list[str], select_bit: str, enable = 1) -> None:
         self.__inputs = inputs
         self.__select_bit = select_bit
         self.__data_width = 0
         self.__output = None
+        self.__enable = enable
         self.__validate_input()
         self.__execute()
         
     
     def __execute(self):
         self.__data_width = len(self.__inputs[0])
+        if self.__enable == 0:
+            self.__output = "0" * self.__data_width
+            return
         select_data = int(self.__select_bit, 2)
         if select_data >= len(self.__inputs):
             self.__output = "0" * self.__data_width
@@ -31,7 +35,9 @@ class Mux:
             for bit in input:
                 if bit not in ["0", "1"]:
                     raise TypeError("Mux: Invalid input")
-    
+        if self.__enable not in [0, 1]:
+            raise TypeError("Mux: Invalid input")
+        
     
     def get_output(self) -> str:
         if self.__output == None:

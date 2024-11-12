@@ -8,15 +8,15 @@ class Adder16bit:
         self.__a = a
         self.__b = b
         self.__carry_in = carry_in
-        self.__s = None
+        self.__output = None
         self.__carry_out = 0
         self.__execute()
         
     
     def get_output(self) -> str:
-        if self.__s == None:
+        if self.__output == None:
             raise ValueError("Adder16bit: Invalid operation")
-        return str(self.__s)[::-1]
+        return str(self.__output)[::-1]
     
     
     def get_carry_out(self) -> str:
@@ -29,5 +29,5 @@ class Adder16bit:
             b = self.__b[i - 3:i + 1]
             carry_in = self.__carry_in
             adder = Adder4bit(a, b, carry_in)
-            self.__s += adder.get_output()[::-1]
+            self.__output += adder.get_output()[::-1]
             self.__carry_in = adder.get_carry_out()
