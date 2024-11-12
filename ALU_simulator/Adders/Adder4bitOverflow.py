@@ -6,7 +6,7 @@ class Adder4bitOverflow:
         self.__a = a
         self.__b = b
         self.__carry_in = carry_in
-        self.__s = ""
+        self.__s = None
         self.__overflow = 0
         self.__validate_input()
         self.__execute()
@@ -22,6 +22,8 @@ class Adder4bitOverflow:
         
     
     def get_s(self) -> str:
+        if self.__s == None:
+            raise ValueError("Adder4bitOverflow: Invalid operation")
         return str(self.__s)[::-1]
     
     

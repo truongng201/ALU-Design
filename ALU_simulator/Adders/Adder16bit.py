@@ -8,12 +8,14 @@ class Adder16bit:
         self.__a = a
         self.__b = b
         self.__carry_in = carry_in
-        self.__s = ""
+        self.__s = None
         self.__carry_out = 0
         self.__execute()
         
     
     def get_s(self) -> str:
+        if self.__s == None:
+            raise ValueError("Adder16bit: Invalid operation")
         return str(self.__s)[::-1]
     
     

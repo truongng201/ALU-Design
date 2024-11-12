@@ -1,6 +1,6 @@
 class Xor:
     def __init__(self, number_of_bit: int, input_a: str, input_b: str) -> None:
-        self.__output = ""
+        self.__output = None
         self.__number_of_bit = number_of_bit
         self.__input_a = input_a
         self.__input_b = input_b
@@ -29,6 +29,8 @@ class Xor:
             
     
     def get_output(self) -> str:
-        return self.__output
+        if self.__output == None:
+            raise ValueError("Xor: Invalid operation")
+        return str(self.__output)
             
         

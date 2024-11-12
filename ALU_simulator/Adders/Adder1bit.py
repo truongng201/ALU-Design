@@ -3,7 +3,7 @@ class Adder1bit:
         self.__a = int(a)
         self.__b = int(b)
         self.__carry_in = int(carry_in)
-        self.__s = ""
+        self.__s = None
         self.__carry_out = 0
         self.__validate_input()
         self.__execute()
@@ -15,6 +15,8 @@ class Adder1bit:
     
     
     def get_s(self) -> str:
+        if self.__s == None:
+            raise ValueError("Adder1bit: Invalid operation")
         return str(self.__s)
     
     

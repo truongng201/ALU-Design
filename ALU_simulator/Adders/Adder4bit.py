@@ -6,7 +6,7 @@ class Adder4bit:
         self.__a = a
         self.__b = b
         self.__carry_in = carry_in
-        self.__s = ""
+        self.__s = None
         self.__carry_out = 0
         self.__validate_input()
         self.__execute()
@@ -21,6 +21,8 @@ class Adder4bit:
     
     
     def get_s(self) -> str:
+        if self.__s == None:
+            raise ValueError("Adder4bit: Invalid operation")
         return str(self.__s)[::-1]
     
     

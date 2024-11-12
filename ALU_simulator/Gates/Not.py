@@ -1,6 +1,6 @@
 class Not:
     def __init__(self, number_of_bit: int, input_a: str) -> None:
-        self.__output = ""
+        self.__output = None
         self.__number_of_bit = number_of_bit
         self.__input_a = input_a
         self.__validate_input()
@@ -22,6 +22,8 @@ class Not:
             
     
     def get_output(self) -> str:
-        return self.__output
+        if self.__output == None:
+            raise ValueError("Not: Invalid operation")
+        return str(self.__output)
             
         

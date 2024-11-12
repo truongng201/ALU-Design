@@ -9,12 +9,14 @@ class Adder16bitOverflow:
         self.__a = a
         self.__b = b
         self.__carry_in = carry_in
-        self.__s = ""
+        self.__s = None
         self.__overflow = 0
         self.__execute()
         
     
     def get_s(self) -> str:
+        if self.__s == None:
+            raise ValueError("Adder16bitOverflow: Invalid operation")
         return str(self.__s)[::-1]
     
     
