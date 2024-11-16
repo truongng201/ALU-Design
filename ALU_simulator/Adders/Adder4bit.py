@@ -1,8 +1,9 @@
 from Adder1bit import Adder1bit
-
+from utils import InvalidType, InvalidOperation, BIT_VALUE
 
 class Adder4bit:
     def __init__(self, a: str, b: str, carry_in: str):
+        self.__BIT_LENGTH = 4
         self.__a = a
         self.__b = b
         self.__carry_in = carry_in
@@ -13,16 +14,18 @@ class Adder4bit:
         
     
     def __validate_input(self):
-        if len(self.__a) != 4 or len(self.__b) != 4 or len(self.__carry_in) != 1:
-            raise TypeError("Adder4bit: Invalid type")
+        if len(self.__a) != self.__BIT_LENGTH or len(self.__b) != self.__BIT_LENGTH :
+            raise InvalidType("Adder4bit")
         for i in range(4):
-            if self.__a[i] not in ("0", "1") or self.__b[i] not in ("0", "1") or self.__carry_in not in ("0", "1"):
-                raise TypeError("Adder4bit: Invalid type")
+            if self.__a[i] not in BIT_VALUE or self.__b[i] not in BIT_VALUE:
+                raise InvalidType("Adder4bit")
+        if self.__carry_in not in BIT_VALUE:
+            raise InvalidType("Adder4bit")
     
     
     def get_output(self) -> str:
         if self.__output == None:
-            raise ValueError("Adder4bit: Invalid operation")
+            raise InvalidOperation("Adder4bit")
         return str(self.__output)[::-1]
     
     
