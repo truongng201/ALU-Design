@@ -28,7 +28,7 @@ class Adder4bitOverflow:
     def get_output(self) -> str:
         if self.__output == None:
             raise InvalidOperation("Adder4bitOverflow")
-        return str(self.__output)[::-1]
+        return str(self.__output)
     
     
     def get_overflow(self) -> str:
@@ -47,3 +47,4 @@ class Adder4bitOverflow:
                 self.__overflow = int(self.__carry_in)
             elif i == 0:
                 self.__overflow ^= int(self.__carry_in)
+        self.__output = str(self.__output)[::-1]

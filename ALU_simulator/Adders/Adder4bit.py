@@ -26,7 +26,7 @@ class Adder4bit:
     def get_output(self) -> str:
         if self.__output == None:
             raise InvalidOperation("Adder4bit")
-        return str(self.__output)[::-1]
+        return str(self.__output)
     
     
     def get_carry_out(self) -> str:
@@ -42,5 +42,6 @@ class Adder4bit:
             self.__output += adder.get_output()
             self.__carry_in = adder.get_carry_out()
         self.__carry_out = self.__carry_in
+        self.__output = str(self.__output)[::-1]
     
     
