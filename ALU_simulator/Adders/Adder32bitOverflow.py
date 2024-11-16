@@ -1,22 +1,33 @@
 from Adder16bitOverflow import Adder16bitOverflow
 from Adder16bit import Adder16bit
+from utils import InvalidType, InvalidOperation, BIT_VALUE
 
 
 class Adder32bitOverflow:
     def __init__(self, a: str, b: str, carry_in: str):
-        if len(a) != 32 or len(b) != 32 or len(carry_in) != 1:
-            raise TypeError("Adder32bitOverflow: Invalid type")
+        self.__BIT_LENGTH = 32
         self.__a = a
         self.__b = b
         self.__carry_in = carry_in
         self.__output = None
         self.__overflow = 0
+        self.__validate_input()
         self.__execute()
+        
+    
+    def __validate_input(self):
+        if len(self.__a) != self.__BIT_LENGTH or len(self.__b) != self.__BIT_LENGTH:
+            raise InvalidType("Adder32bitOverflow")
+        for i in range(self.__BIT_LENGTH):
+            if self.__a[i] not in BIT_VALUE or self.__b[i] not in BIT_VALUE:
+                raise InvalidType("Adder32bitOverflow")
+        if self.__carry_in not in BIT_VALUE:
+            raise InvalidType("Adder32bitOverflow")
         
     
     def get_output(self) -> str:
         if self.__output == None:
-            raise ValueError("Adder32bitOverflow: Invalid operation")
+            raise InvalidOperation("Adder32bitOverflow")
         return str(self.__output)[::-1]
     
     
@@ -25,7 +36,7 @@ class Adder32bitOverflow:
     
     
     def __execute(self):
-        for i in range(31, -1, -16):
+        for i in range(self.__BIT_LENGTH - 1, -1, -16):
             a = self.__a[i - 15:i + 1]
             b = self.__b[i - 15:i + 1]
             carry_in = self.__carry_in
@@ -36,5 +47,5 @@ class Adder32bitOverflow:
             else:
                 adder = Adder16bitOverflow(a, b, carry_in)
                 self.__output += adder.get_output()[::-1]
-                self.__overflow = int(adder.get_overflow())
+                self.__overflow = adder.get_overflow()
                 

@@ -15,19 +15,19 @@ class Adder4bitOverflow:
         
     
     def __validate_input(self):
-        if len(self.__a) != self.__BIT_LENGTH or len(self.__b) != self.__BIT_LENGTH or len(self.__carry_in) != 1:
+        if len(self.__a) != self.__BIT_LENGTH or len(self.__b) != self.__BIT_LENGTH:
             raise InvalidType("Adder4bitOverflow")
-        for i in range(4):
+        for i in range(self.__BIT_LENGTH):
             if self.__a[i] not in BIT_VALUE or self.__b[i] not in BIT_VALUE:
-                raise TypeError("Adder4bitOverflow: Invalid type")
+                raise InvalidType("Adder4bitOverflow")
         if self.__carry_in not in BIT_VALUE:
-            raise TypeError("Adder4bitOverflow: Invalid type")
+            raise InvalidType("Adder4bitOverflow")
     
         
     
     def get_output(self) -> str:
         if self.__output == None:
-            raise ValueError("Adder4bitOverflow: Invalid operation")
+            raise InvalidOperation("Adder4bitOverflow")
         return str(self.__output)[::-1]
     
     
@@ -36,7 +36,7 @@ class Adder4bitOverflow:
     
     
     def __execute(self):
-        for i in range(3, -1, -1):
+        for i in range(self.__BIT_LENGTH - 1, -1, -1):
             a = self.__a[i]
             b = self.__b[i]
             carry_in = self.__carry_in

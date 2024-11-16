@@ -16,7 +16,7 @@ class Adder4bit:
     def __validate_input(self):
         if len(self.__a) != self.__BIT_LENGTH or len(self.__b) != self.__BIT_LENGTH :
             raise InvalidType("Adder4bit")
-        for i in range(4):
+        for i in range(self.__BIT_LENGTH):
             if self.__a[i] not in BIT_VALUE or self.__b[i] not in BIT_VALUE:
                 raise InvalidType("Adder4bit")
         if self.__carry_in not in BIT_VALUE:
@@ -34,7 +34,7 @@ class Adder4bit:
     
     
     def __execute(self):
-        for i in range(3, -1, -1):
+        for i in range(self.__BIT_LENGTH - 1, -1, -1):
             a = self.__a[i]
             b = self.__b[i]
             carry_in = self.__carry_in

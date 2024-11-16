@@ -1,1 +1,2 @@
 BIT_VALUE = ('0', '1')
+OPERATION_BIT_LENGTH = 4
