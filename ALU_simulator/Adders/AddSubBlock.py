@@ -1,6 +1,6 @@
 from Plexers import Mux
 from Adder32bitOverflow import Adder32bitOverflow
-from Gates import Xor, Not
+from Gates import Not
 from utils import InvalidType, InvalidOperation, BIT_VALUE, OPERATION_BIT_LENGTH
 
 class AddSubBlock:
@@ -52,7 +52,7 @@ class AddSubBlock:
         self.__overflow = adder.get_overflow()
         
         self.__output = Mux(
-            ["0" * self.__BIT_LENGTH,self.__output], 
+            [None, self.__output], 
             str(self.__select_bits), 
             enable=self.__enable_mux
         ).get_output()
