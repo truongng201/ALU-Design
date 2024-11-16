@@ -1,4 +1,5 @@
 from LeftShift4 import LeftShift4
+from utils import InvalidType, InvalidOperation, ALU_BIT_LENGTH, BIT_VALUE
 
 class LeftShift8:
     def __init__(self, input: str, carry_in: int):
@@ -15,17 +16,17 @@ class LeftShift8:
     
     
     def __validate_input(self):
+        if len(self.__input) != ALU_BIT_LENGTH:
+            raise InvalidType("LeftShift8")
+        if self.__carry_in not in BIT_VALUE:
+            raise InvalidType("LeftShift8")
         for bit in self.__input:
-            if bit not in ["0", "1"]:
-                raise TypeError("LeftShift8: Invalid input")
-        if len(self.__input) != 32:
-            raise TypeError("LeftShift8: Invalid input")
-        if self.__carry_in not in [0, 1]:
-            raise TypeError("LeftShift8: Invalid input")
+            if bit not in BIT_VALUE:
+                raise InvalidType("LeftShift8")
         
     
     def get_output(self) -> str:
         if self.__output == None:
-            raise ValueError("LeftShift8: Invalid operation")
+            raise InvalidOperation("LeftShift8")
         return str(self.__output)
         

@@ -1,4 +1,5 @@
-from LeftShift8 import LeftShift48
+from LeftShift8 import LeftShift8
+from utils import InvalidType, InvalidOperation, ALU_BIT_LENGTH, BIT_VALUE
 
 class LeftShift16:
     def __init__(self, input: str, carry_in: int):
@@ -10,21 +11,21 @@ class LeftShift16:
 
 
     def __execute(self):
-        self.__output = LeftShift16(self.__input, self.__carry_in).get_output()
-        self.__output = LeftShift16(self.__output, self.__carry_in).get_output()
+        self.__output = LeftShift8(self.__input, self.__carry_in).get_output()
+        self.__output = LeftShift8(self.__output, self.__carry_in).get_output()
     
     
     def __validate_input(self):
+        if len(self.__input) != ALU_BIT_LENGTH:
+            raise InvalidType("LeftShift16")
+        if self.__carry_in not in BIT_VALUE:
+            raise InvalidType("LeftShift16")
         for bit in self.__input:
-            if bit not in ["0", "1"]:
-                raise TypeError("LeftShift16: Invalid input")
-        if len(self.__input) != 32:
-            raise TypeError("LeftShift16: Invalid input")
-        if self.__carry_in not in [0, 1]:
-            raise TypeError("LeftShift16: Invalid input")
+            if bit not in BIT_VALUE:
+                raise InvalidType("LeftShift16")
         
     
     def get_output(self) -> str:
         if self.__output == None:
-            raise ValueError("LeftShift16: Invalid operation")
+            raise InvalidOperation("LeftShift16")
         return str(self.__output)

@@ -1,5 +1,4 @@
-from utils import InvalidType, InvalidOperation, BIT_VALUE
-from Gates import AND, OR, NOT, XOR
+from utils import InvalidType, InvalidOperation, BIT_VALUE, ALU_BIT_LENGTH, OPERATION_BIT_LENGTH
 
 
 class Comparator32Block:
@@ -13,18 +12,21 @@ class Comparator32Block:
 
 
     def __validate_input(self):
-        if len(self.__input_a) != 32 or len(self.__input_b) != 32 or len(self.__operation) != 4:
-            raise TypeError("ComparatorBlock: Invalid input")
+        if len(self.__input_a) != ALU_BIT_LENGTH:
+            raise InvalidType("ComparatorBlock")
+        if len(self.__input_b) != ALU_BIT_LENGTH:
+            raise InvalidType("ComparatorBlock")
+        if len(self.__operation) != OPERATION_BIT_LENGTH:
+            raise InvalidType("ComparatorBlock")
         for bit in self.__input_a:
-            if bit not in ["0", "1"]:
-                raise TypeError("ComparatorBlock: Invalid input")
+            if bit not in BIT_VALUE:
+                raise InvalidType("ComparatorBlock")
         for bit in self.__input_b:
-            if bit not in ["0", "1"]:
-                raise TypeError("ComparatorBlock: Invalid input")
+            if bit not in BIT_VALUE:
+                raise InvalidType("ComparatorBlock")
         for bit in self.__operation:
-            if bit not in ["0", "1"]:
-                raise TypeError("ComparatorBlock: Invalid input")
-    
+            if bit not in BIT_VALUE:
+                raise InvalidType("ComparatorBlock")
     
     def __execute(self):
         pass
@@ -32,5 +34,5 @@ class Comparator32Block:
     
     def get_output(self):
         if self.__output is None:
-            raise ValueError("ComparatorBlock: Output is not ready")
+            raise InvalidOperation("ComparatorBlock")
         return str(self.__output)

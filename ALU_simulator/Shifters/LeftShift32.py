@@ -4,10 +4,11 @@ from LeftShift4 import LeftShift4
 from LeftShift8 import LeftShift8
 from LeftShift16 import LeftShift16
 from Plexers import Mux
+from utils import InvalidType, InvalidOperation, ALU_BIT_LENGTH, BIT_VALUE, SHIFT_AMOUNT_BIT_LENGTH
 
 
 class LeftShift32:
-    def __init__(self, input: str, carry_in: int, shift_amount: str):
+    def __init__(self, input: str, carry_in: str, shift_amount: str):
         self.__output = None
         self.__input = input
         self.__carry_in = carry_in
@@ -30,21 +31,21 @@ class LeftShift32:
     
     
     def __validate_input(self):
+        if len(self.__input) != ALU_BIT_LENGTH:
+            raise InvalidType("LeftShift32")
+        if self.__carry_in not in BIT_VALUE:
+            raise InvalidType("LeftShift32")
+        if len(self.__shift_amount) != SHIFT_AMOUNT_BIT_LENGTH:
+            raise InvalidType("LeftShift32")
         for bit in self.__input:
-            if bit not in ["0", "1"]:
-                raise TypeError("LeftShift32: Invalid input")
-        if len(self.__input) != 32:
-            raise TypeError("LeftShift32: Invalid input")
-        if self.__carry_in not in [0, 1]:
-            raise TypeError("LeftShift32: Invalid input")
+            if bit not in BIT_VALUE:
+                raise InvalidType("LeftShift32")
         for bit in self.__shift_amount:
-            if bit not in ["0", "1"]:
-                raise TypeError("LeftShift32: Invalid input")
-        if len(self.__shift_amount) != 5:
-            raise TypeError("LeftShift32: Invalid input")
+            if bit not in BIT_VALUE:
+                raise InvalidType("LeftShift32")
     
     
     def get_output(self) -> str:
         if self.__output == None:
-            raise ValueError("LeftShift32: Invalid operation")
+            raise InvalidOperation("LeftShift32")
         return str(self.__output)

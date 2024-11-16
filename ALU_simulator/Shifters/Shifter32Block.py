@@ -1,3 +1,7 @@
+from utils import InvalidType, InvalidOperation, ALU_BIT_LENGTH, BIT_VALUE, SHIFT_AMOUNT_BIT_LENGTH, OPERATION_BIT_LENGTH
+from Comparators import MSB
+from Reverse32bit import Reverse32bit
+
 class Shifter32Block:
     def __init__(self, input_bits: str, shift_amount: str, operation: str):
         self.__input_bits = input_bits
@@ -9,18 +13,22 @@ class Shifter32Block:
         
     
     def __validate_input(self):
-        if len(self.__input_bits) != 32 or len(self.__shift_amount) != 5 or len(self.__operation) != 4:
-            raise TypeError("ShifterBlock: Invalid input")
+        if len(self.__input_bits) != ALU_BIT_LENGTH:
+            raise InvalidType("ShifterBlock")
+        if len(self.__shift_amount) != SHIFT_AMOUNT_BIT_LENGTH:
+            raise InvalidType("ShifterBlock")
+        if len(self.__operation) != OPERATION_BIT_LENGTH:
+            raise InvalidType("ShifterBlock")
         for bit in self.__input_bits:
-            if bit not in ["0", "1"]:
-                raise TypeError("ShifterBlock: Invalid input")
+            if bit not in BIT_VALUE:
+                raise InvalidType("ShifterBlock")
         for bit in self.__shift_amount:
-            if bit not in ["0", "1"]:
-                raise TypeError("ShifterBlock: Invalid input")
+            if bit not in BIT_VALUE:
+                raise InvalidType("ShifterBlock")
         for bit in self.__operation:
-            if bit not in ["0", "1"]:
-                raise TypeError("ShifterBlock: Invalid input")
-            
+            if bit not in BIT_VALUE:
+                raise InvalidType("ShifterBlock")
+        
     
     def __execute(self):
         pass
@@ -28,6 +36,6 @@ class Shifter32Block:
     
     def get_output(self):
         if self.__output is None:
-            raise ValueError("ShifterBlock: Output is not ready")
+            raise InvalidOperation("ShifterBlock")
         return str(self.__output)
         

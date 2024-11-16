@@ -43,9 +43,9 @@ class ALU32:
         logical = Logical32Block(self.__input_a, self.__input_b, self.__operation)
         shifter = Shifter32Block(self.__input_b, self.__shift_amount, self.__operation)
         
-        self.__output = Or(adder.get_output(), comparator.get_output())
-        self.__output = Or(self.__output, logical.get_output())
-        self.__output = Or(self.__output, shifter.get_output())
+        self.__output = Or(ALU_BIT_LENGTH, adder.get_output(), comparator.get_output())
+        self.__output = Or(ALU_BIT_LENGTH, self.__output, logical.get_output())
+        self.__output = Or(ALU_BIT_LENGTH, self.__output, shifter.get_output())
         self.__overflow = adder.get_overflow()
         
         
