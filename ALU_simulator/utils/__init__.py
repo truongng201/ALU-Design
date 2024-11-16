@@ -1,2 +1,2 @@
-from error_handling import InvalidInput, InvalidOperation, InvalidType
+from exception import InvalidInput, InvalidOperation, InvalidType
 from config import *

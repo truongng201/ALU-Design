@@ -1,11 +1,10 @@
 from Plexers import Mux
 from Adder32bitOverflow import Adder32bitOverflow
 from Gates import Not
-from utils import InvalidType, InvalidOperation, BIT_VALUE, OPERATION_BIT_LENGTH
+from utils import InvalidType, InvalidOperation, BIT_VALUE, OPERATION_BIT_LENGTH, ALU_BIT_LENGTH
 
 class AddSubBlock:
     def __init__(self, input_a: str, input_b: str,  operation: str):
-        self.__BIT_LENGTH = 32
         self.__input_a = input_a
         self.__input_b = input_b
         self.__operation = operation
@@ -28,11 +27,11 @@ class AddSubBlock:
     
         
     def __validate_input(self):
-        if len(self.__input_a) != self.__BIT_LENGTH \
-            or len(self.__input_b) != self.__BIT_LENGTH \
+        if len(self.__input_a) != ALU_BIT_LENGTH \
+            or len(self.__input_b) != ALU_BIT_LENGTH \
             or len(self.__operation) != OPERATION_BIT_LENGTH:
             raise InvalidType("AddSubBlock")
-        for i in range(self.__BIT_LENGTH):
+        for i in range(ALU_BIT_LENGTH):
             if self.__input_a[i] not in BIT_VALUE or self.__input_b[i] not in BIT_VALUE:
                 raise InvalidType("AddSubBlock")
         for bit in self.__operation:
@@ -42,7 +41,7 @@ class AddSubBlock:
         
     def __execute(self):
         self.__input_b = Mux(
-            [self.__input_b, Not(self.__BIT_LENGTH, self.__input_b)], 
+            [self.__input_b, Not(ALU_BIT_LENGTH, self.__input_b)], 
             str(self.__select_bits), 
             enable=self.__enable_mux
         ).get_output()

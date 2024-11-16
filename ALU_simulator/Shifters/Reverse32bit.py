@@ -1,4 +1,4 @@
-class FlipMirror32bit:
+class Reverse32bit:
     def __init__(self, input: str):
         self.__input = input
         self.__output = None

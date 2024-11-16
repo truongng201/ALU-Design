@@ -1,4 +1,4 @@
-from utils import InvalidType, BIT_VALUE, SHIFT_AMOUNT_BIT_LENGTH, OPERATION_BIT_LENGTH
+from utils import InvalidType, BIT_VALUE, SHIFT_AMOUNT_BIT_LENGTH, OPERATION_BIT_LENGTH, ALU_BIT_LENGTH
 from Adders import AddSubBlock
 from Comparators import ComparatorBlock
 from Gates import Or
@@ -7,7 +7,6 @@ from Shifters import ShifterBlock
 
 class ALU32:
     def __init__(self, input_a: str, input_b: str, operation: str, shift_amount: str):
-        self.__BIT_LENGTH = 32
         self.__input_a = input_a
         self.__input_b = input_b
         self.__operation = operation
@@ -19,8 +18,8 @@ class ALU32:
         
         
     def __validate_input(self):
-        if len(self.__input_a) != self.__BIT_LENGTH \
-            or len(self.__input_b) != self.__BIT_LENGTH \
+        if len(self.__input_a) != ALU_BIT_LENGTH \
+            or len(self.__input_b) != ALU_BIT_LENGTH \
             or len(self.__operation) != OPERATION_BIT_LENGTH \
             or len(self.__shift_amount) != SHIFT_AMOUNT_BIT_LENGTH:
             raise InvalidType("ALU32")

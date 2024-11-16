@@ -1,6 +1,6 @@
-from GateAbstract import GateAbstract
+from utils import InvalidType, InvalidOperation, BIT_VALUE
 
-class Nor(GateAbstract):
+class Nor:
     def __init__(self, number_of_bit: int, input_a: str, input_b: str) -> None:
         self.__output = None
         self.__number_of_bit = number_of_bit
@@ -12,17 +12,17 @@ class Nor(GateAbstract):
         
     def __validate_input(self):
         if len(self.__input_a) != len(self.__input_b):
-            raise TypeError("Nor: Invalid type")
+            raise InvalidType("Nor")
         if self.__number_of_bit != len(self.__input_a):
-            raise TypeError("Nor: Invalid type")
+            raise InvalidType("Nor")
         if self.__number_of_bit < 1:
-            raise TypeError("Nor: Invalid type")
+            raise InvalidType("Nor")
         for bit in self.__input_a:
-            if bit not in ("0", "1"):
-                raise TypeError("Nor: Invalid type")
+            if bit not in BIT_VALUE:
+                raise InvalidType("Nor")
         for bit in self.__input_b:
-            if bit not in ("0", "1"):
-                raise TypeError("Nor: Invalid type")
+            if bit not in BIT_VALUE:
+                raise InvalidType("Nor")
         
         
     def __execute(self):
@@ -32,7 +32,7 @@ class Nor(GateAbstract):
     
     def get_output(self) -> str:
         if self.__output == None:
-            raise ValueError("Nor: Invalid operation")
+            raise InvalidOperation("Nor")
         return str(self.__output)
             
         

@@ -1,3 +1,5 @@
+from utils import InvalidType, InvalidOperation, BIT_VALUE
+
 class Not:
     def __init__(self, number_of_bit: int, input_a: str) -> None:
         self.__output = None
@@ -9,12 +11,12 @@ class Not:
         
     def __validate_input(self):
         if self.__number_of_bit != len(self.__input_a):
-            raise TypeError("Not: Invalid type")
+            raise InvalidType("Not")
         if self.__number_of_bit < 1:
-            raise TypeError("Not: Invalid type")
+            raise InvalidType("Not")
         for bit in self.__input_a:
-            if bit not in ("0", "1"):
-                raise TypeError("Not: Invalid type")
+            if bit not in BIT_VALUE:
+                raise InvalidType("Not")
         
     def __execute(self):
         for i in range(self.__number_of_bit):
@@ -23,7 +25,7 @@ class Not:
     
     def get_output(self) -> str:
         if self.__output == None:
-            raise ValueError("Not: Invalid operation")
+            raise InvalidOperation("Not")
         return str(self.__output)
             
         

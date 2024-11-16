@@ -1,4 +1,4 @@
-from FlipMirror32bit import FlipMirror32bit
+from Reverse32bit import Reverse32bit
 from LeftShift1 import LeftShift1
 from LeftShift2 import LeftShift2
 from LeftShift4 import LeftShift4

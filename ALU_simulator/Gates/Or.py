@@ -1,3 +1,5 @@
+from utils import InvalidType, InvalidOperation, BIT_VALUE
+
 class Or:
     def __init__(self, number_of_bit: int, input_a: str, input_b: str) -> None:
         self.__output = None
@@ -10,17 +12,17 @@ class Or:
         
     def __validate_input(self):
         if len(self.__input_a) != len(self.__input_b):
-            raise TypeError("Or: Invalid type")
+            raise InvalidType("Or")
         if self.__number_of_bit != len(self.__input_a):
-            raise TypeError("Or: Invalid type")
+            raise InvalidType("Or")
         if self.__number_of_bit < 1:
-            raise TypeError("Or: Invalid type")
+            raise InvalidType("Or")
         for bit in self.__input_a:
-            if bit not in ("0", "1"):
-                raise TypeError("Or: Invalid type")
+            if bit not in BIT_VALUE:
+                raise InvalidType("Or")
         for bit in self.__input_b:
-            if bit not in ("0", "1"):
-                raise TypeError("Or: Invalid type")
+            if bit not in BIT_VALUE:
+                raise InvalidType("Or")
         
         
     def __execute(self):
@@ -30,7 +32,7 @@ class Or:
     
     def get_output(self) -> str:
         if self.__output == None:
-            raise ValueError("Or: Invalid operation")
+            raise InvalidOperation("Or")
         return str(self.__output)
             
         
