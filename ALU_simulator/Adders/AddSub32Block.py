@@ -3,7 +3,7 @@ from Adder32bitOverflow import Adder32bitOverflow
 from Gates import Not
 from utils import InvalidType, InvalidOperation, BIT_VALUE, OPERATION_BIT_LENGTH, ALU_BIT_LENGTH
 
-class AddSubBlock:
+class AddSub32Block:
     def __init__(self, input_a: str, input_b: str,  operation: str):
         self.__input_a = input_a
         self.__input_b = input_b

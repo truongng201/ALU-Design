@@ -2,7 +2,7 @@ from utils import InvalidType, InvalidOperation, BIT_VALUE, OPERATION_BIT_LENGTH
 from Gates import And, Or, Xor, Xnor
 from Plexers import Mux
 
-class LogicalBlock:
+class Logical32Block:
     def __init__(self, input_a: str, input_b: str, operation: str):
         self.__BIT_LENGTH = 32
         self.__input_a = input_a
@@ -10,6 +10,7 @@ class LogicalBlock:
         self.__operation = operation
         self.__output = None
         self.__select_bits = None
+        self.__enable_mux = 0
         self.__select_operation()
         self.__validate_input()
         self.__execute()
@@ -46,7 +47,8 @@ class LogicalBlock:
         xnor_result = Xnor(self.__input_a, self.__input_b).get_output()
         self.__output = Mux(
             [and_result, or_result, xor_result, xnor_result],
-            self.__operation
+            str(self.__select_bits),
+            enable=str(self.__enable_mux)
         )
     
     

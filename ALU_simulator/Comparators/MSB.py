@@ -1,0 +1,2 @@
+class MSB:
+    pass

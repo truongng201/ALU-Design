@@ -2,7 +2,7 @@ from utils import InvalidType, InvalidOperation, BIT_VALUE
 from Gates import AND, OR, NOT, XOR
 
 
-class ComparatorBlock:
+class Comparator32Block:
     def __init__(self, input_a: str, input_b: str, operation: str):
         self.__input_a = input_a
         self.__input_b = input_b

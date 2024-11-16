@@ -1,1 +1,1 @@
-from LogicalBlock import LogicalBlock
+from Logical32Block import Logical32Block

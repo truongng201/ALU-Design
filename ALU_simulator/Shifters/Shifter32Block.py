@@ -1,4 +1,4 @@
-class ShifterBlock:
+class Shifter32Block:
     def __init__(self, input_bits: str, shift_amount: str, operation: str):
         self.__input_bits = input_bits
         self.__shift_amount = shift_amount

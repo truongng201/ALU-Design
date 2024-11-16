@@ -1,1 +1,6 @@
-from ComparatorBlock import ComparatorBlock
+from Comparator32Block import Comparator32Block
+from IsEqual import IsEqual
+from BitExtend1to32 import BitExtend1to32
+from IsEqual0 import IsEqual0
+from LessThanOrEqual0 import LessThanOrEqual0
+from GreaterThan0 import GreaterThan0
