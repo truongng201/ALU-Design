@@ -1,0 +1,5 @@
+from ALU_simulator.Test.Adders.Adder1bit_test import TestAdder1bit
+from ALU_simulator.Test.Adders.Adder4bit_test import TestAdder4bitOverflow
+from ALU_simulator.Test.Adders.Adder16bit_test import TestAdder16bitOverflow
+from ALU_simulator.Test.Adders.Adder32bit_test import TestAdder32bitOverflow
+from ALU_simulator.Test.Adders.AddSub32Block_test import TestAddSub32Block
