@@ -46,6 +46,4 @@ class LeftShift32:
     
     
     def get_output(self) -> str:
-        if self.__output == None:
-            raise InvalidOperation("LeftShift32")
         return str(self.__output)

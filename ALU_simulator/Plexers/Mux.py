@@ -13,20 +13,17 @@ class Mux:
     
     def __execute(self):
         for data in self.__inputs:
-            if data:
+            if data != None:
                 self.__data_width = len(data)
                 break
         if self.__enable == 0:
             self.__output = "0" * self.__data_width
             return
         select_data = int(self.__select_bit, 2)
-        print("This is select data", select_data)
-        print("This is inputs", self.__inputs)
         if select_data >= len(self.__inputs) or self.__inputs[select_data] == None:
             self.__output = "0" * self.__data_width
         else:
             self.__output = self.__inputs[select_data]
-        print("This is output", self.__output)
         
         
     def __validate_input(self):

@@ -26,6 +26,4 @@ class LeftShift2:
         
     
     def get_output(self) -> str:
-        if self.__output == None:
-            raise InvalidOperation("LeftShift2")
         return str(self.__output)

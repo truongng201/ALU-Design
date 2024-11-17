@@ -26,7 +26,5 @@ class LeftShift8:
         
     
     def get_output(self) -> str:
-        if self.__output == None:
-            raise InvalidOperation("LeftShift8")
         return str(self.__output)
         

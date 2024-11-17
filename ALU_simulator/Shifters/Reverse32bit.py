@@ -19,4 +19,4 @@ class Reverse32bit:
     
 
     def get_output(self) -> str:
-        return self.__output
+        return str(self.__output)
