@@ -1,6 +1,6 @@
-from utils import InvalidType, InvalidOperation, BIT_VALUE, OPERATION_BIT_LENGTH
-from Gates import And, Or, Xor, Xnor
-from Plexers import Mux
+from ALU_simulator.utils import InvalidType, BIT_VALUE, OPERATION_BIT_LENGTH
+from ALU_simulator.Gates import And, Or, Xor, Xnor
+from ALU_simulator.Plexers import Mux
 
 class Logical32Block:
     def __init__(self, input_a: str, input_b: str, operation: str):

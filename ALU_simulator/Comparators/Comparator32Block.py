@@ -1,4 +1,4 @@
-from utils import InvalidType, InvalidOperation, BIT_VALUE, ALU_BIT_LENGTH, OPERATION_BIT_LENGTH
+from ALU_simulator.utils import InvalidType, BIT_VALUE, ALU_BIT_LENGTH, OPERATION_BIT_LENGTH
 
 
 class Comparator32Block:

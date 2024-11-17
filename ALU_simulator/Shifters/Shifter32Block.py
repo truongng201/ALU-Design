@@ -1,4 +1,4 @@
-from utils import InvalidType, InvalidOperation, ALU_BIT_LENGTH, BIT_VALUE, SHIFT_AMOUNT_BIT_LENGTH, OPERATION_BIT_LENGTH
+from ALU_simulator.utils import InvalidType,  ALU_BIT_LENGTH, BIT_VALUE, SHIFT_AMOUNT_BIT_LENGTH, OPERATION_BIT_LENGTH
 from Comparators import MSB
 from Reverse32bit import Reverse32bit
 

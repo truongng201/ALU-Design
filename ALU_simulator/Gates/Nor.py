@@ -1,8 +1,8 @@
-from utils import InvalidType, InvalidOperation, BIT_VALUE
+from ALU_simulator.utils import InvalidType, BIT_VALUE
 
 class Nor:
     def __init__(self, number_of_bit: int, input_a: str, input_b: str) -> None:
-        self.__output = None
+        self.__output = ""
         self.__number_of_bit = number_of_bit
         self.__input_a = input_a
         self.__input_b = input_b
@@ -31,8 +31,6 @@ class Nor:
             
     
     def get_output(self) -> str:
-        if self.__output == None:
-            raise InvalidOperation("Nor")
         return str(self.__output)
             
         

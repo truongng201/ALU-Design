@@ -1,2 +1,2 @@
-from exception import InvalidInput, InvalidOperation, InvalidType
-from config import *
+from ALU_simulator.utils.exception import InvalidInput,  InvalidType
+from ALU_simulator.utils.config import *

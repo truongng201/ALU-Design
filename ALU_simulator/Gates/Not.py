@@ -1,8 +1,8 @@
-from utils import InvalidType, InvalidOperation, BIT_VALUE
+from ALU_simulator.utils import InvalidType, BIT_VALUE
 
 class Not:
     def __init__(self, number_of_bit: int, input_a: str) -> None:
-        self.__output = None
+        self.__output = ""
         self.__number_of_bit = number_of_bit
         self.__input_a = input_a
         self.__validate_input()
@@ -24,8 +24,6 @@ class Not:
             
     
     def get_output(self) -> str:
-        if self.__output == None:
-            raise InvalidOperation("Not")
         return str(self.__output)
             
         

@@ -1,6 +1,6 @@
-from Adder16bitOverflow import Adder16bitOverflow
-from Adder16bit import Adder16bit
-from utils import InvalidType, InvalidOperation, BIT_VALUE, ALU_BIT_LENGTH
+from ALU_simulator.Adders.Adder16bitOverflow import Adder16bitOverflow
+from ALU_simulator.Adders.Adder16bit import Adder16bit
+from ALU_simulator.utils import InvalidType, BIT_VALUE, ALU_BIT_LENGTH
 
 
 class Adder32bitOverflow:
@@ -8,7 +8,7 @@ class Adder32bitOverflow:
         self.__a = a
         self.__b = b
         self.__carry_in = carry_in
-        self.__output = None
+        self.__output = ""
         self.__overflow = 0
         self.__validate_input()
         self.__execute()
@@ -25,8 +25,6 @@ class Adder32bitOverflow:
         
     
     def get_output(self) -> str:
-        if self.__output == None:
-            raise InvalidOperation("Adder32bitOverflow")
         return str(self.__output)
     
     

@@ -1,4 +1,4 @@
-from utils import InvalidType, InvalidOperation, ALU_BIT_LENGTH, BIT_VALUE
+from ALU_simulator.utils import InvalidType,  ALU_BIT_LENGTH, BIT_VALUE
 
 class LeftShift1:
     def __init__(self, input_b: str, carry_in: str):

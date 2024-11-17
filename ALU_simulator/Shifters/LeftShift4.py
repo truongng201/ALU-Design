@@ -1,5 +1,5 @@
 from LeftShift2 import LeftShift2
-from utils import InvalidType, InvalidOperation, ALU_BIT_LENGTH, BIT_VALUE
+from ALU_simulator.utils import InvalidType,  ALU_BIT_LENGTH, BIT_VALUE
 
 
 class LeftShift4:

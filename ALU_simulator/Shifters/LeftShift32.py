@@ -4,7 +4,7 @@ from LeftShift4 import LeftShift4
 from LeftShift8 import LeftShift8
 from LeftShift16 import LeftShift16
 from Plexers import Mux
-from utils import InvalidType, InvalidOperation, ALU_BIT_LENGTH, BIT_VALUE, SHIFT_AMOUNT_BIT_LENGTH
+from ALU_simulator.utils import InvalidType,  ALU_BIT_LENGTH, BIT_VALUE, SHIFT_AMOUNT_BIT_LENGTH
 
 
 class LeftShift32:

@@ -1,5 +1,5 @@
 from LeftShift8 import LeftShift8
-from utils import InvalidType, InvalidOperation, ALU_BIT_LENGTH, BIT_VALUE
+from ALU_simulator.utils import InvalidType,  ALU_BIT_LENGTH, BIT_VALUE
 
 class LeftShift16:
     def __init__(self, input: str, carry_in: int):

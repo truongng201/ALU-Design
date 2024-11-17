@@ -1,4 +1,4 @@
-from utils import InvalidType, BIT_VALUE, SHIFT_AMOUNT_BIT_LENGTH, OPERATION_BIT_LENGTH, ALU_BIT_LENGTH
+from ALU_simulator.utils import InvalidType, BIT_VALUE, SHIFT_AMOUNT_BIT_LENGTH, OPERATION_BIT_LENGTH, ALU_BIT_LENGTH
 from Adders import AddSub32Block
 from Comparators import Comparator32Block
 from Gates import Or

@@ -1,7 +1,7 @@
-from Plexers import Mux
-from Adder32bitOverflow import Adder32bitOverflow
-from Gates import Not
-from utils import InvalidType, InvalidOperation, BIT_VALUE, OPERATION_BIT_LENGTH, ALU_BIT_LENGTH
+from ALU_simulator.Plexers import Mux
+from ALU_simulator.Adders.Adder32bitOverflow import Adder32bitOverflow
+from ALU_simulator.Gates import Not
+from ALU_simulator.utils import InvalidType, BIT_VALUE, OPERATION_BIT_LENGTH, ALU_BIT_LENGTH
 
 class AddSub32Block:
     def __init__(self, input_a: str, input_b: str,  operation: str):
@@ -19,9 +19,9 @@ class AddSub32Block:
         
     
     def __select_operation(self):
-        first_min_term = int(self.__operation[1]) and (not int(self.__operation[2])) and (not int(self.__operation[3]))
-        second_min_term = int(self.__operation[1]) and int(self.__operation[2]) and (not int(self.__operation[3]))
-        self.__enable_mux = first_min_term or second_min_term
+        first_min_term = int(self.__operation[1]) & (not int(self.__operation[2])) & (not int(self.__operation[3]))
+        second_min_term = int(self.__operation[1]) & int(self.__operation[2]) & (not int(self.__operation[3]))
+        self.__enable_mux = first_min_term | second_min_term
         self.__carry_in = str(second_min_term)
         self.__select_bits = second_min_term
     
@@ -41,7 +41,7 @@ class AddSub32Block:
         
     def __execute(self):
         self.__input_b = Mux(
-            [self.__input_b, Not(ALU_BIT_LENGTH, self.__input_b)], 
+            [self.__input_b, Not(ALU_BIT_LENGTH, self.__input_b).get_output()], 
             str(self.__select_bits), 
             enable=self.__enable_mux
         ).get_output()
@@ -62,8 +62,6 @@ class AddSub32Block:
     
     
     def get_output(self) -> str:
-        if self.__output == None:
-            raise InvalidOperation("AddSubBlock")
         return str(self.__output)
     
     

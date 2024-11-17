@@ -1,5 +1,5 @@
-from Adder4bit import Adder4bit
-from utils import InvalidType, InvalidOperation, BIT_VALUE
+from ALU_simulator.Adders.Adder4bit import Adder4bit
+from ALU_simulator.utils import InvalidType, BIT_VALUE
 
 class Adder16bit:
     def __init__(self, a: str, b: str, carry_in: str):
@@ -7,7 +7,7 @@ class Adder16bit:
         self.__a = a
         self.__b = b
         self.__carry_in = carry_in
-        self.__output = None
+        self.__output = ""
         self.__carry_out = 0
         self.__validate_input()
         self.__execute()
@@ -24,8 +24,6 @@ class Adder16bit:
     
     
     def get_output(self) -> str:
-        if self.__output == None:
-            raise InvalidOperation("Adder16bit")
         return str(self.__output)
     
     
@@ -34,7 +32,7 @@ class Adder16bit:
     
     
     def __execute(self):
-        for i in range(self.__BIT_LENGTH, -1, -4):
+        for i in range(self.__BIT_LENGTH - 1, -1, -4):
             a = self.__a[i - 3:i + 1]
             b = self.__b[i - 3:i + 1]
             carry_in = self.__carry_in
