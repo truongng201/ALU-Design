@@ -33,6 +33,4 @@ class Comparator32Block:
     
     
     def get_output(self):
-        if self.__output is None:
-            raise InvalidOperation("ComparatorBlock")
         return str(self.__output)
