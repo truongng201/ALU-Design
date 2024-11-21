@@ -6,6 +6,7 @@ MIN_INT = - 2**31
 MOD = 2**32
 TOTAL_OP_CODE = 16
 TOTAL_SHIFT_AMOUNT = 32
+SHIFT_OPCODE = [0, 1, 12, 13]
 
 # check if folder exists
 if not os.path.exists("../Test_Vector"):
@@ -109,56 +110,189 @@ def generate_edge_cases():
     A, B = None, None
     
     # both A and B is 0
+    file.write("# Both A and B is 0\n")
     for Op in range(TOTAL_OP_CODE):
         A = 0
         B = 0
         
-        for Sa in range(TOTAL_SHIFT_AMOUNT):
-            output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=Sa)
+        if Op in SHIFT_OPCODE:
+            for Sa in range(TOTAL_SHIFT_AMOUNT):
+                output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=Sa)
+                if output_c == None or overflow_v == None:
+                    print("generate_edge_cases.case1: Something wrong")
+                    return
+                file.write(f"{A} {B} {Op} {Sa} {output_c} {overflow_v}\n")
+        else:
+            output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=0)
             if output_c == None or overflow_v == None:
-                print("generate_edge_cases.case1: Something wrong")
+                print("generate_edge_cases.case1.1: Something wrong")
                 return
-            file.write(f"{A} {B} {Op} {Sa} {output_c} {overflow_v}\n")
+            file.write(f"{A} {B} {Op} {0} {output_c} {overflow_v}\n")
         
 
     # A is 0 and B is max
+    file.write("# A is 0 and B is max\n")
     for Op in range(TOTAL_OP_CODE):
         A = 0
         B = MAX_INT
         
-        for Sa in range(TOTAL_SHIFT_AMOUNT):
-            output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=Sa)
+        if Op in SHIFT_OPCODE:
+            for Sa in range(TOTAL_SHIFT_AMOUNT):
+                output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=Sa)
+                if output_c == None or overflow_v == None:
+                    print("generate_edge_cases.case2.1: Something wrong")
+                    return
+                file.write(f"{A} {B} {Op} {Sa} {output_c} {overflow_v}\n")
+        else:
+            output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=0)
             if output_c == None or overflow_v == None:
-                print("generate_edge_cases.case2: Something wrong")
+                print("generate_edge_cases.case2.2: Something wrong")
                 return
-            file.write(f"{A} {B} {Op} {Sa} {output_c} {overflow_v}\n")
+            file.write(f"{A} {B} {Op} {0} {output_c} {overflow_v}\n")
+    
+    # A is 0 and B is min
+    file.write("# A is 0 and B is min\n")
+    for Op in range(TOTAL_OP_CODE):
+        A = 0
+        B = MIN_INT
+        
+        if Op in SHIFT_OPCODE:
+            for Sa in range(TOTAL_SHIFT_AMOUNT):
+                output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=Sa)
+                if output_c == None or overflow_v == None:
+                    print("generate_edge_cases.case3.1: Something wrong")
+                    return
+                file.write(f"{A} {B} {Op} {Sa} {output_c} {overflow_v}\n")
+        else:
+            output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=0)
+            if output_c == None or overflow_v == None:
+                print("generate_edge_cases.case3.2: Something wrong")
+                return
+            file.write(f"{A} {B} {Op} {0} {output_c} {overflow_v}\n")
+    
+    # A is max and B is 0
+    file.write("# A is max and B is 0\n")
+    for Op in range(TOTAL_OP_CODE):
+        A = MAX_INT
+        B = 0
+        
+        if Op in SHIFT_OPCODE:
+            for Sa in range(TOTAL_SHIFT_AMOUNT):
+                output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=Sa)
+                if output_c == None or overflow_v == None:
+                    print("generate_edge_cases.case4.1: Something wrong")
+                    return
+                file.write(f"{A} {B} {Op} {Sa} {output_c} {overflow_v}\n")
+        else:
+            output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=0)
+            if output_c == None or overflow_v == None:
+                print("generate_edge_cases.case4.2: Something wrong")
+                return
+            file.write(f"{A} {B} {Op} {0} {output_c} {overflow_v}\n")
+    
+    # A is min and B is 0
+    file.write("# A is min and B is 0\n")
+    for Op in range(TOTAL_OP_CODE):
+        A = MIN_INT
+        B = 0
+        
+        if Op in SHIFT_OPCODE:
+            for Sa in range(TOTAL_SHIFT_AMOUNT):
+                output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=Sa)
+                if output_c == None or overflow_v == None:
+                    print("generate_edge_cases.case5.1: Something wrong")
+                    return
+                file.write(f"{A} {B} {Op} {Sa} {output_c} {overflow_v}\n")
+        else:
+            output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=0)
+            if output_c == None or overflow_v == None:
+                print("generate_edge_cases.case5.2: Something wrong")
+                return
+            file.write(f"{A} {B} {Op} {0} {output_c} {overflow_v}\n")
+    
+    # A is min and B is max
+    file.write("# A is min and B is max\n")
+    for Op in range(TOTAL_OP_CODE):
+        A = MIN_INT
+        B = MAX_INT
+        
+        if Op in SHIFT_OPCODE:
+            for Sa in range(TOTAL_SHIFT_AMOUNT):
+                output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=Sa)
+                if output_c == None or overflow_v == None:
+                    print("generate_edge_cases.case6.1: Something wrong")
+                    return
+                file.write(f"{A} {B} {Op} {Sa} {output_c} {overflow_v}\n")
+        else:
+            output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=0)
+            if output_c == None or overflow_v == None:
+                print("generate_edge_cases.case6.2: Something wrong")
+                return
+            file.write(f"{A} {B} {Op} {0} {output_c} {overflow_v}\n")
             
+    # A is max and B is min
+    file.write("# A is max and B is min\n")
+    for Op in range(TOTAL_OP_CODE):
+        A = MAX_INT
+        B = MIN_INT
+        
+        if Op in SHIFT_OPCODE:
+            for Sa in range(TOTAL_SHIFT_AMOUNT):
+                output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=Sa)
+                if output_c == None or overflow_v == None:
+                    print("generate_edge_cases.case7.1: Something wrong")
+                    return
+                file.write(f"{A} {B} {Op} {Sa} {output_c} {overflow_v}\n")
+        else:
+            output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=0)
+            if output_c == None or overflow_v == None:
+                print("generate_edge_cases.case7.2: Something wrong")
+                return
+            file.write(f"{A} {B} {Op} {0} {output_c} {overflow_v}\n")        
+    
+    
     # A is max and B is max
+    file.write("# A is max and B is max\n")
     for Op in range(TOTAL_OP_CODE):
         A = MAX_INT
         B = MAX_INT
         
-        for Sa in range(TOTAL_SHIFT_AMOUNT):
-            output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=Sa)
+        if Op in SHIFT_OPCODE:
+            for Sa in range(TOTAL_SHIFT_AMOUNT):
+                output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=Sa)
+                if output_c == None or overflow_v == None:
+                    print("generate_edge_cases.case8.1: Something wrong")
+                    return
+                file.write(f"{A} {B} {Op} {Sa} {output_c} {overflow_v}\n")
+        else:
+            output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=0)
             if output_c == None or overflow_v == None:
-                print("generate_edge_cases.case3: Something wrong")
+                print("generate_edge_cases.case8.2: Something wrong")
                 return
-            file.write(f"{A} {B} {Op} {Sa} {output_c} {overflow_v}\n")
-    
+            file.write(f"{A} {B} {Op} {0} {output_c} {overflow_v}\n")
+                
     # A is min and B is min
+    file.write("# A is min and B is min\n")
     for Op in range(TOTAL_OP_CODE):
         A = MIN_INT
         B = MIN_INT
         
-        for Sa in range(TOTAL_SHIFT_AMOUNT):
-            output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=Sa)
+        if Op in SHIFT_OPCODE:
+            for Sa in range(TOTAL_SHIFT_AMOUNT):
+                output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=Sa)
+                if output_c == None or overflow_v == None:
+                    print("generate_edge_cases.case9.1: Something wrong")
+                    return
+                file.write(f"{A} {B} {Op} {Sa} {output_c} {overflow_v}\n")
+        else:
+            output_c, overflow_v = get_result(input_a=A, input_b=B, op_code=Op, shift_amount=0)
             if output_c == None or overflow_v == None:
-                print("generate_edge_cases.case4: Something wrong")
+                print("generate_edge_cases.case9.2: Something wrong")
                 return
-            file.write(f"{A} {B} {Op} {Sa} {output_c} {overflow_v}\n")
+            file.write(f"{A} {B} {Op} {0} {output_c} {overflow_v}\n")
     
  
-def generate_random_cases(number_of_cases = 10000):
+def generate_random_cases(number_of_cases = 2000):
     file.write("# Random cases\n")
     for _ in range(number_of_cases):
         A = random.randint(MIN_INT, MAX_INT)
