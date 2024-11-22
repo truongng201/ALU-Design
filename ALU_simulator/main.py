@@ -12,6 +12,10 @@ from ALU_simulator.Test.Comparators import *
 from ALU_simulator.Test.Logical import *
 
 try:
+    print("-" * 50)
+    print("----- ALU Components: Starting test cases --------")
+    print("-" * 50)
+    print()
     print("---------- Adders: Starting test cases -----------")
     TestAdder1bit()
     TestAdder4bitOverflow()
@@ -33,6 +37,10 @@ try:
     print("--------- Logical: Starting test cases -----------")
     TestLogical32Block()
     print("--------- Logical: All test cases pass -----------")
+    print()
+    print("-" * 50)
+    print("----- ALU Components: All test test cases --------")
+    print("-" * 50)
 except AssertionError as e:
     print(e)
     print("Test failed")
