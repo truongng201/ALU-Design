@@ -1,5 +1,10 @@
 from ALU_simulator.utils import InvalidType, BIT_VALUE, ALU_BIT_LENGTH, OPERATION_BIT_LENGTH
-
+from ALU_simulator.Comparators.BitExtend1to32 import BitExtend1to32
+from ALU_simulator.Comparators.IsEqual import IsEqual
+from ALU_simulator.Comparators.LessThanOrEqual0 import LessThanOrEqual0
+from ALU_simulator.Comparators.GreaterThan0 import GreaterThan0
+from ALU_simulator.Plexers import Mux
+from ALU_simulator.Gates import Not
 
 class Comparator32Block:
     def __init__(self, input_a: str, input_b: str, operation: str):
@@ -7,8 +12,32 @@ class Comparator32Block:
         self.__input_b = input_b
         self.__operation = operation
         self.__output = None
+        self.__enable_mux = None
+        self.__select_bits = None
+        self.__select_operation()
         self.__validate_input()
         self.__execute()
+        
+        
+    def __select_operation(self):
+        operation3 = True if int(self.__operation[0]) == 1 else False
+        operation2 = True if int(self.__operation[1]) == 1 else False
+        operation1 = True if int(self.__operation[2]) == 1 else False
+        operation0 = True if int(self.__operation[3]) == 1 else False
+        
+        # operation3 and not operation2 and not operation1 and not operation0
+        first_min_term = operation3 and (not operation2) and (not operation1) and (not operation0)
+        # operation3 and not operation2 and not operation1 and operation0
+        second_min_term = operation3 and (not operation2) and (not operation1) and operation0
+        # operation3 and operation2 and operation1 and not operation0
+        third_min_term = operation3 and operation2 and operation1 and (not operation0)
+        # operation3 and operation2 and operation1 and operation0
+        fourth_min_term = operation3 and operation2 and operation1 and operation0
+        
+        self.__enable_mux = "1" if first_min_term or second_min_term or third_min_term or fourth_min_term else "0"
+        second_or = "1" if second_min_term or fourth_min_term else "0"
+        third_or = "1" if third_min_term or fourth_min_term else "0"
+        self.__select_bits = third_or + second_or
 
 
     def __validate_input(self):
@@ -29,8 +58,20 @@ class Comparator32Block:
                 raise InvalidType("ComparatorBlock")
     
     def __execute(self):
-        pass
+        equal = IsEqual(self.__input_a, self.__input_b).get_output()
+        less_than_or_equal_0 = LessThanOrEqual0(self.__input_a).get_output()
+        greater_than_0 = GreaterThan0(self.__input_a).get_output()
+        
+        notequal = BitExtend1to32(Not(1, equal).get_output()).get_output()
+        equal = BitExtend1to32(equal).get_output()
+        less_than_or_equal_0 = BitExtend1to32(less_than_or_equal_0).get_output()
+        greater_than_0 = BitExtend1to32(greater_than_0).get_output()
+        self.__output = Mux(
+            [notequal, equal, less_than_or_equal_0, greater_than_0],
+            str(self.__select_bits),
+            enable=str(self.__enable_mux)
+        ).get_output()
     
     
-    def get_output(self):
+    def get_output(self) -> str:
         return str(self.__output)

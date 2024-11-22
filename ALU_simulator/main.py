@@ -27,6 +27,7 @@ try:
     TestMSB()
     TestLessThanOrEqual0()
     TestGreaterThan0()
+    TestComparator32Block()
     print("------- Comparators: All test cases pass ---------")
     print()
     print("--------- Logical: Starting test cases -----------")

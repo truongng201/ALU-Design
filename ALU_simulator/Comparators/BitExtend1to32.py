@@ -9,7 +9,7 @@ class BitExtend1to32:
         
     
     def __execute(self) -> None:
-        self.__output = self.__input_a + "0" * 31
+        self.__output = "0" * 31 + self.__input_a
         
     
     def __validate_input(self) -> None:
