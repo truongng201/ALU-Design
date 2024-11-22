@@ -10,11 +10,16 @@ if __name__ == "__main__" and __package__ is None:
 from ALU_simulator.Test.Adders import *
 from ALU_simulator.Test.Comparators import *
 from ALU_simulator.Test.Logical import *
+from ALU_simulator.Test.Gates import *
 
 try:
     print("-" * 50)
     print("----- ALU Components: Starting test cases --------")
     print("-" * 50)
+    print()
+    print("----------- Gates: Starting test cases -----------")
+    TestGates()
+    print("----------- Gates: All test cases pass -----------")
     print()
     print("---------- Adders: Starting test cases -----------")
     TestAdder1bit()
