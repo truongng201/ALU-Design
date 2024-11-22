@@ -8,11 +8,11 @@ class AddSub32Block:
         self.__input_a = input_a
         self.__input_b = input_b
         self.__operation = operation
-        self.__output = None
-        self.__carry_in = None
-        self.__enable_mux = None
+        self.__output = ""
+        self.__carry_in = ""
+        self.__enable_mux = ""
         self.__overflow = 0
-        self.__select_bits = None
+        self.__select_bits = ""
         self.__select_operation()
         self.__validate_input()
         self.__execute()
@@ -48,8 +48,8 @@ class AddSub32Block:
     def __execute(self):
         self.__input_b = Mux(
             [self.__input_b, Not(ALU_BIT_LENGTH, self.__input_b).get_output()], 
-            str(self.__select_bits), 
-            enable=str(self.__enable_mux)
+            select_bit=self.__select_bits, 
+            enable=self.__enable_mux
         ).get_output()
         
         adder = Adder32bitOverflow(self.__input_a, self.__input_b, self.__carry_in)
@@ -57,9 +57,9 @@ class AddSub32Block:
         self.__overflow = adder.get_overflow()
         
         self.__output = Mux(
-            [None, self.__output], 
-            str(self.__enable_mux), 
-            enable=str(self.__enable_mux)
+            ["", self.__output], 
+            select_bit=self.__enable_mux, 
+            enable=self.__enable_mux
         ).get_output()
     
     

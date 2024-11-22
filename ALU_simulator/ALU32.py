@@ -11,8 +11,8 @@ class ALU32:
         self.__input_b = input_b
         self.__operation = operation
         self.__shift_amount = shift_amount
-        self.__output = None
-        self.__overflow = None
+        self.__output = ""
+        self.__overflow = ""
         self.__validate_input()
         self.__execute()
         
@@ -50,12 +50,12 @@ class ALU32:
         
         
     def get_output(self) -> str:
-        if self.__output is None:
+        if self.__output is "":
             raise ValueError("ALU32: Output is not ready")
         return str(self.__output)
     
     
     def get_overflow(self) -> str:
-        if self.__overflow is None:
+        if self.__overflow is "":
             raise ValueError("ALU32: Output is not ready")
         return str(self.__overflow)

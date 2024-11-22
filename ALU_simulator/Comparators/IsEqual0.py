@@ -2,14 +2,14 @@ from ALU_simulator.utils import InvalidType, BIT_VALUE, ALU_BIT_LENGTH
 from ALU_simulator.Gates import Or, Not
 
 class IsEqual0:
-    def __init__(self, input_a: str) -> None:
+    def __init__(self, input_a: str):
         self.__input_a = input_a
         self.__output = ""
         self.__validate_input()
         self.__execute()
         
     
-    def __execute(self) -> None:
+    def __execute(self):
         or_gate1 = Or(8, self.__input_a[:8], self.__input_a[8:16])
         or_gate2 = Or(8, or_gate1.get_output(), self.__input_a[16:24])
         or_gate3 = Or(8, or_gate2.get_output(), self.__input_a[24:32])
@@ -26,7 +26,7 @@ class IsEqual0:
         self.__output = Not(1, or_gate1.get_output()).get_output()
         
         
-    def __validate_input(self) -> None:
+    def __validate_input(self):
         if len(self.__input_a) != ALU_BIT_LENGTH:
             raise InvalidType("IsEqual0")
         for bit in self.__input_a:

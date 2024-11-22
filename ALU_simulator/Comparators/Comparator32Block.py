@@ -11,9 +11,9 @@ class Comparator32Block:
         self.__input_a = input_a
         self.__input_b = input_b
         self.__operation = operation
-        self.__output = None
-        self.__enable_mux = None
-        self.__select_bits = None
+        self.__output = ""
+        self.__enable_mux = ""
+        self.__select_bits = ""
         self.__select_operation()
         self.__validate_input()
         self.__execute()
@@ -68,8 +68,8 @@ class Comparator32Block:
         greater_than_0 = BitExtend1to32(greater_than_0).get_output()
         self.__output = Mux(
             [notequal, equal, less_than_or_equal_0, greater_than_0],
-            str(self.__select_bits),
-            enable=str(self.__enable_mux)
+            select_bit=self.__select_bits,
+            enable=self.__enable_mux
         ).get_output()
     
     

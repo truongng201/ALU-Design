@@ -7,7 +7,7 @@ class Shifter32Block:
         self.__input_bits = input_bits
         self.__shift_amount = shift_amount
         self.__operation = operation
-        self.__output = None
+        self.__output = ""
         self.__validate_input()
         self.__execute()
         
@@ -34,6 +34,6 @@ class Shifter32Block:
         pass
         
     
-    def get_output(self):
+    def get_output(self) -> str:
         return str(self.__output)
         

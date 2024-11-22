@@ -1,7 +1,7 @@
 from ALU_simulator.utils import InvalidInput, BIT_VALUE, OPERATION_BIT_LENGTH
 
 class Mux:
-    def __init__(self, inputs: list[str], select_bit: str, enable = 1) -> None:
+    def __init__(self, inputs: list[str], select_bit: str, enable = "1"):
         self.__inputs = inputs
         self.__select_bit = select_bit
         self.__data_width = 0
@@ -16,7 +16,7 @@ class Mux:
             if data != None:
                 self.__data_width = len(data)
                 break
-        if self.__enable == 0:
+        if self.__enable == "0":
             self.__output = "0" * self.__data_width
             return
         select_data = int(self.__select_bit, 2)
@@ -34,7 +34,7 @@ class Mux:
             raise InvalidInput("Mux")
         if len(self.__inputs) > 2 ** len(self.__select_bit):
             raise InvalidInput("Mux")
-        if str(self.__enable) not in BIT_VALUE:
+        if self.__enable not in BIT_VALUE:
             raise InvalidInput("Mux")
         
     

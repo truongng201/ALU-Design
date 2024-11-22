@@ -1,7 +1,7 @@
 from ALU_simulator.utils import InvalidType, BIT_VALUE, ALU_BIT_LENGTH
 
 class MSB:
-    def __init__(self, input_a: str) -> None:
+    def __init__(self, input_a: str):
         self.__input_a = input_a
         self.__output = ""
         self.__validate_input()

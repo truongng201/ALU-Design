@@ -7,9 +7,9 @@ class Logical32Block:
         self.__input_a = input_a
         self.__input_b = input_b
         self.__operation = operation
-        self.__output = None
-        self.__select_bits = None
-        self.__enable_mux = 0
+        self.__output = ""
+        self.__select_bits = ""
+        self.__enable_mux = ""
         self.__select_operation()
         self.__validate_input()
         self.__execute()
@@ -59,10 +59,10 @@ class Logical32Block:
         xnor_result = Xnor(ALU_BIT_LENGTH, self.__input_a, self.__input_b).get_output()
         self.__output = Mux(
             [and_result, or_result, xor_result, xnor_result],
-            str(self.__select_bits),
-            enable=str(self.__enable_mux)
+            select_bit=self.__select_bits,
+            enable=self.__enable_mux
         ).get_output()
     
     
-    def get_output(self):
+    def get_output(self) -> str:
         return str(self.__output)

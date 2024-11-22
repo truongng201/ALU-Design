@@ -29,5 +29,5 @@ class GreaterThan0:
                 raise InvalidType("GreaterThan0")
     
     
-    def get_output(self):
+    def get_output(self) -> str:
         return str(self.__output)

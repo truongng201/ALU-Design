@@ -3,7 +3,7 @@ from ALU_simulator.utils import BIT_VALUE, InvalidType, ALU_BIT_LENGTH
 class Reverse32bit:
     def __init__(self, input: str):
         self.__input = input
-        self.__output = None
+        self.__output = ""
         self.__validate_input()
         self.__execute()
         

@@ -1,7 +1,7 @@
 from ALU_simulator.utils import InvalidType, BIT_VALUE
 
 class Nor:
-    def __init__(self, number_of_bit: int, input_a: str, input_b: str) -> None:
+    def __init__(self, number_of_bit: int, input_a: str, input_b: str):
         self.__output = ""
         self.__number_of_bit = number_of_bit
         self.__input_a = input_a
