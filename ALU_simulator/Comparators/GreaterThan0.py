@@ -1,7 +1,7 @@
 from ALU_simulator.utils import InvalidType, BIT_VALUE, ALU_BIT_LENGTH
 from ALU_simulator.Gates import And, Not
 from ALU_simulator.Comparators.IsEqual0 import IsEqual0
-from ALU_simulator.Comparators.MSB import MSB
+from ALU_simulator.Shifters.MSB import MSB
 
 class GreaterThan0:
     def __init__(self, input_a: str):

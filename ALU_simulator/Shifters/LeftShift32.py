@@ -1,15 +1,15 @@
-from LeftShift1 import LeftShift1
-from LeftShift2 import LeftShift2
-from LeftShift4 import LeftShift4
-from LeftShift8 import LeftShift8
-from LeftShift16 import LeftShift16
-from Plexers import Mux
+from ALU_simulator.Shifters.LeftShift1 import LeftShift1
+from ALU_simulator.Shifters.LeftShift2 import LeftShift2
+from ALU_simulator.Shifters.LeftShift4 import LeftShift4
+from ALU_simulator.Shifters.LeftShift8 import LeftShift8
+from ALU_simulator.Shifters.LeftShift16 import LeftShift16
+from ALU_simulator.Plexers import Mux
 from ALU_simulator.utils import InvalidType,  ALU_BIT_LENGTH, BIT_VALUE, SHIFT_AMOUNT_BIT_LENGTH
 
 
 class LeftShift32:
     def __init__(self, input: str, carry_in: str, shift_amount: str):
-        self.__output = None
+        self.__output = ""
         self.__input = input
         self.__carry_in = carry_in
         self.__shift_amount = shift_amount

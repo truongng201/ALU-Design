@@ -2,7 +2,7 @@ from ALU_simulator.utils import InvalidType,  ALU_BIT_LENGTH, BIT_VALUE
 
 class LeftShift1:
     def __init__(self, input_b: str, carry_in: str):
-        self.__output = None
+        self.__output = ""
         self.__input_b = input_b
         self.__carry_in = carry_in
         self.__validate_input()

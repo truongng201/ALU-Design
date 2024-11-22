@@ -1,6 +1,6 @@
 from ALU_simulator.utils import InvalidType, ALU_BIT_LENGTH, BIT_VALUE, SHIFT_AMOUNT_BIT_LENGTH, OPERATION_BIT_LENGTH
-from Comparators import MSB
-from Reverse32bit import Reverse32bit
+from ALU_simulator.Shifters.MSB import MSB
+from ALU_simulator.Shifters.Reverse32bit import Reverse32bit
 
 class Shifter32Block:
     def __init__(self, input_bits: str, shift_amount: str, operation: str):

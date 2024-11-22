@@ -1,10 +1,10 @@
-from LeftShift2 import LeftShift2
+from ALU_simulator.Shifters.LeftShift2 import LeftShift2
 from ALU_simulator.utils import InvalidType,  ALU_BIT_LENGTH, BIT_VALUE
 
 
 class LeftShift4:
     def __init__(self, input: str, carry_in: str):
-        self.__output = None
+        self.__output = ""
         self.__input = input
         self.__carry_in = carry_in
         self.__validate_input()
