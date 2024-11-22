@@ -17,7 +17,7 @@ try:
     TestAdder4bitOverflow()
     TestAdder16bitOverflow()
     TestAdder32bitOverflow()
-    # TestAddSub32Block()
+    TestAddSub32Block()
     print("---------- Adders: All test cases pass -----------")
     print()
     print("------- Comparators: Starting test cases ---------")

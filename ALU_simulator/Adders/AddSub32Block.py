@@ -19,11 +19,17 @@ class AddSub32Block:
         
     
     def __select_operation(self):
-        first_min_term = int(self.__operation[1]) & (not int(self.__operation[2])) & (not int(self.__operation[3]))
-        second_min_term = int(self.__operation[1]) & int(self.__operation[2]) & (not int(self.__operation[3]))
-        self.__enable_mux = first_min_term | second_min_term
-        self.__carry_in = str(second_min_term)
-        self.__select_bits = second_min_term
+        operation3 = True if int(self.__operation[0]) == 1 else False
+        operation2 = True if int(self.__operation[1]) == 1 else False
+        operation1 = True if int(self.__operation[2]) == 1 else False
+        
+        # not operation3 and not operation2 and operation1
+        first_min_term = (not operation3) and (not operation2) and operation1
+        # not operation3 and operation2 and operation1
+        second_min_term = (not operation3) and operation2 and operation1
+        self.__enable_mux = "1" if first_min_term or second_min_term else "0"
+        self.__carry_in = "1" if second_min_term else "0"
+        self.__select_bits = "1" if second_min_term else "0"
     
         
     def __validate_input(self):
@@ -43,7 +49,7 @@ class AddSub32Block:
         self.__input_b = Mux(
             [self.__input_b, Not(ALU_BIT_LENGTH, self.__input_b).get_output()], 
             str(self.__select_bits), 
-            enable=self.__enable_mux
+            enable=str(self.__enable_mux)
         ).get_output()
         
         adder = Adder32bitOverflow(self.__input_a, self.__input_b, self.__carry_in)
@@ -52,8 +58,8 @@ class AddSub32Block:
         
         self.__output = Mux(
             [None, self.__output], 
-            str(self.__select_bits), 
-            enable=self.__enable_mux
+            str(self.__enable_mux), 
+            enable=str(self.__enable_mux)
         ).get_output()
     
     
