@@ -11,21 +11,22 @@ from ALU_simulator.Test.Adders import *
 from ALU_simulator.Test.Comparators import *
 
 try:
+    print("---------- Adders: Starting test cases -----------")
     TestAdder1bit()
     TestAdder4bitOverflow()
     TestAdder16bitOverflow()
     TestAdder32bitOverflow()
     # TestAddSub32Block()
-    print("Adders: All test cases pass")
-    print("-" * 50)
-    
+    print("---------- Adders: All test cases pass -----------")
+    print()
+    print("------- Comparators: Starting test cases ---------")
     TestIsEqual0()
     TestBitExtend1to32()
     TestIsEqual()
     TestMSB()
     TestLessThanOrEqual0()
-    print("Comparators: All test cases pass")
-    print("-" * 50)
+    TestGreaterThan0()
+    print("------- Comparators: All test cases pass ---------")
 except AssertionError as e:
     print(e)
     print("Test failed")

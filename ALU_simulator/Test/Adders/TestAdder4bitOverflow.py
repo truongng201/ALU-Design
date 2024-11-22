@@ -20,5 +20,5 @@ class TestAdder4bitOverflow:
 
             adder = Adder4bitOverflow(A, B, carry_in=Cin)
             result = adder.get_output()
-            assert result == C, f"Adder4bit: Test case failed with A={A}, B={B}, Cin={Cin}. Expected {C} but got {result}"
-        print("Adder4bit: All test cases passed")
+            assert result == C, f"Adder4bitOverflow: Test case failed with A={A}, B={B}, Cin={Cin}. Expected {C} but got {result}"
+        print("Adder4bitOverflow: All test cases passed")
