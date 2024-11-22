@@ -1,3 +1,5 @@
+from ALU_simulator.utils import BIT_VALUE, InvalidType, ALU_BIT_LENGTH
+
 class Reverse32bit:
     def __init__(self, input: str):
         self.__input = input
@@ -12,11 +14,10 @@ class Reverse32bit:
     
     def __validate_input(self):
         for bit in self.__input:
-            if bit not in ["0", "1"]:
-                raise TypeError("FlipMirror32bit: Invalid input")
-        if len(self.__input) != 32:
-            raise TypeError("FlipMirror32bit: Invalid input")
-    
+            if bit not in BIT_VALUE:
+                raise InvalidType("Reverse32bit")
+        if len(self.__input) != ALU_BIT_LENGTH:
+            raise InvalidType("Reverse32bit")
 
     def get_output(self) -> str:
         return str(self.__output)
