@@ -1,0 +1,1 @@
+from ALU_simulator.Test.Comparators.IsEqual0_test import TestIsEqual0
