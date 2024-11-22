@@ -1,0 +1,1 @@
+from ALU_simulator.Test.Logical.TestLogical32Block import TestLogical32Block

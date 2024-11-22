@@ -27,7 +27,7 @@ class Xnor:
         
     def __execute(self):
         for i in range(self.__number_of_bit):
-            self.__output += str(int(self.__input_a[i]) & int(self.__input_b[i]))
+            self.__output += "1" if  (not int(self.__input_a[i]) | int(self.__input_b[i])) else "0"
             
     
     def get_output(self) -> str:

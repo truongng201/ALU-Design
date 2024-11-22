@@ -9,6 +9,7 @@ if __name__ == "__main__" and __package__ is None:
 
 from ALU_simulator.Test.Adders import *
 from ALU_simulator.Test.Comparators import *
+from ALU_simulator.Test.Logical import *
 
 try:
     print("---------- Adders: Starting test cases -----------")
@@ -27,6 +28,10 @@ try:
     TestLessThanOrEqual0()
     TestGreaterThan0()
     print("------- Comparators: All test cases pass ---------")
+    print()
+    print("--------- Logical: Starting test cases -----------")
+    TestLogical32Block()
+    print("--------- Logical: All test cases pass -----------")
 except AssertionError as e:
     print(e)
     print("Test failed")

@@ -1,1 +1,1 @@
-from Logical32Block import Logical32Block
+from ALU_simulator.Logical.Logical32Block import Logical32Block
