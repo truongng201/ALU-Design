@@ -18,6 +18,7 @@ try:
     # TestAddSub32Block()
     
     TestIsEqual0()
+    TestBitExtend1to32()
 except AssertionError as e:
     print(e)
     print("Test failed")

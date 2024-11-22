@@ -1,1 +1,2 @@
 from ALU_simulator.Test.Comparators.IsEqual0_test import TestIsEqual0
+from ALU_simulator.Test.Comparators.BitExtend1to32_test import TestBitExtend1to32
