@@ -23,6 +23,7 @@ try:
     TestBitExtend1to32()
     TestIsEqual()
     TestMSB()
+    TestLessThanOrEqual0()
     print("Comparators: All test cases pass")
     print("-" * 50)
 except AssertionError as e:
