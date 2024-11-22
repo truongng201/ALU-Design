@@ -1,2 +1,3 @@
 class IsEqual0:
-    pass
+    def __init__(self, input_a: str) -> None:
+        pass
