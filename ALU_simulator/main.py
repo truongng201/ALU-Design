@@ -19,6 +19,7 @@ try:
     
     TestIsEqual0()
     TestBitExtend1to32()
+    TestIsEqual()
 except AssertionError as e:
     print(e)
     print("Test failed")

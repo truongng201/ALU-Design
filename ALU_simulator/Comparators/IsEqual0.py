@@ -1,4 +1,4 @@
-from ALU_simulator.utils import InvalidType, BIT_VALUE, ALU_BIT_LENGTH, OPERATION_BIT_LENGTH
+from ALU_simulator.utils import InvalidType, BIT_VALUE, ALU_BIT_LENGTH
 from ALU_simulator.Gates import Or, Not
 
 class IsEqual0:
