@@ -16,10 +16,15 @@ try:
     TestAdder16bitOverflow()
     TestAdder32bitOverflow()
     # TestAddSub32Block()
+    print("Adders: All test cases pass")
+    print("-" * 50)
     
     TestIsEqual0()
     TestBitExtend1to32()
     TestIsEqual()
+    TestMSB()
+    print("Comparators: All test cases pass")
+    print("-" * 50)
 except AssertionError as e:
     print(e)
     print("Test failed")
