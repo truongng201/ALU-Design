@@ -5,3 +5,4 @@ from ALU_simulator.Test.Shifters.TestLeftShift4 import TestLeftShift4
 from ALU_simulator.Test.Shifters.TestLeftShift8 import TestLeftShift8
 from ALU_simulator.Test.Shifters.TestLeftShift16 import TestLeftShift16
 from ALU_simulator.Test.Shifters.TestLeftShift32 import TestLeftShift32
+from ALU_simulator.Test.Shifters.TestReverse32bit import TestReverse32bit
