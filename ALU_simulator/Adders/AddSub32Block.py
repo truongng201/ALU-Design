@@ -58,7 +58,7 @@ class AddSub32Block:
         self.__overflow = adder.get_overflow()
         
         self.__output = Mux(
-            ["", self.__output], 
+            [None, self.__output], 
             select_bit=self.__enable_mux, 
             enable=self.__enable_mux
         ).get_output()

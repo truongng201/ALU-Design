@@ -8,3 +8,11 @@ if __name__ == "__main__" and __package__ is None:
     __package__ = "ALU_simulator"
 
 from ALU_simulator.Test.TestALU32 import TestALU32
+
+print("-" * 50)
+print("--------- ALU32: Starting test cases ------------")
+print("-" * 50)
+TestALU32()
+print("-" * 50)
+print("----------------- End test cases ----------------")
+print("-" * 50)

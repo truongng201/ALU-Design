@@ -1,6 +1,6 @@
 # Simple ALU for course COMP2020 - computer organization
 
-## Description
+## Project overview
 
 This is a simple ALU for course COMP2020 - computer organization. It is implemented in Verilog. The ALU supports the following operations:
 
@@ -66,4 +66,106 @@ The ALU simulation is implemented in Python. The simulation reads the input from
   - The output C (32 bits)
   - The output V (1 bit)
 
-This ALU simulation is used to help you understand the ALU operation (if you don't :> ).
+### Usage
+
+First, you need to change directory to the `ALU_simulator` directory and then add the input file and output file to the directory:
+
+```bash
+cd ALU_simulator && touch input_file output_file
+```
+
+To run the simulation, you need to have Python installed on your machine. You can run the simulation by executing the following command:
+
+```bash
+python3 main.py input_file output_file
+```
+
+Where `input_file` is the path to the input file and `output_file` is the path to the output file.
+
+To test the ALU, you can use the provided test cases in the `test` directory. You can run the simulation using the following command:
+
+```bash
+python3 TestALU.py && python3 TestComponents.py
+```
+
+The result of TestALU.py and TestComponents.py should be all passed.
+
+```txt
+TestALU32: Total pass:  14608
+TestALU32: Total fail:  0
+TestALU32: Finish testing
+```
+
+```txt
+--------------------------------------------------
+----- ALU Components: Starting test cases --------
+--------------------------------------------------
+
+----------- Gates: Starting test cases -----------
+Gates: All test cases pass
+----------- Gates: All test cases pass -----------
+
+---------- Adders: Starting test cases -----------
+Adder1bit: All test cases passed
+Adder4bitOverflow: All test cases passed
+Adder16bitOverflow: All test cases passed
+Adder32bitOverflow: All test cases passed
+AddSub32Block: All test cases passed
+---------- Adders: All test cases pass -----------
+
+------- Comparators: Starting test cases ---------
+IsEqual0: All test cases pass
+BitExtend1to32: All test cases pass
+IsEqual: All test cases pass
+LessThanOrEqual0: All test cases pass
+GreaterThan0: All test cases pass
+------- Comparators: All test cases pass ---------
+
+--------- Logical: Starting test cases -----------
+Logical32Block: All test cases passed
+--------- Logical: All test cases pass -----------
+
+-------- Shifters: Starting test cases -----------
+MSB: All test cases pass
+LeftShift1: All test cases passed
+LeftShift2: All test cases passed
+LeftShift4: All test cases passed
+LeftShift8: All test cases passed
+LeftShift16: All test cases passed
+LeftShift32: All test cases passed
+Reverse32bit: All test cases passed
+Shifter32Block: All test cases passed
+--------------------------------------------------
+----- ALU Components: All test test cases --------
+--------------------------------------------------
+```
+
+TestALU.py is used to test the ALU operation, and TestComponents.py is used to test each sub-component of the ALU.
+
+### Example
+
+The input file should look like this:
+
+```txt
+A[32] B[32] Op[4] Sa[5]
+0 0 0 0
+0 0 0 1
+0 0 0 2
+0 0 0 3
+0 0 0 4
+0 0 0 5
+```
+
+The output file should look like this:
+
+```txt
+C[32] V
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+```
+
+This ALU simulation is used to help you understand the ALU operation (if you don't :> ). You can use it to test the ALU operation and verify the correctness of the ALU implementation. If you like it, please give me a star. Thank you!
