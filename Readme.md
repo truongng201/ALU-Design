@@ -144,7 +144,7 @@ TestALU.py is used to test the ALU operation, and TestComponents.py is used to t
 
 ### Example
 
-The input file should look like this:
+The input file should look like this (the type of the input should be decimal):
 
 ```txt
 A[32] B[32] Op[4] Sa[5]
@@ -160,12 +160,12 @@ The output file should look like this:
 
 ```txt
 C[32] V
-0 0
-0 0
-0 0
-0 0
-0 0
-0 0
+00000000000000000000000000000000 0
+00000000000000000000000000000000 0
+00000000000000000000000000000000 0
+00000000000000000000000000000000 0
+00000000000000000000000000000000 0
+00000000000000000000000000000000 0
 ```
 
 This ALU simulation is used to help you understand the ALU operation (if you don't :> ). You can use it to test the ALU operation and verify the correctness of the ALU implementation. If you like it, please give me a star. Thank you!
