@@ -42,12 +42,12 @@ class Shifter32Block:
         # not operation3 and not operation2 and not operation1
         first_min_term = (~ operation3) & (~ operation2) & (~ operation1)
         # operation3 and operation2 and not operation1 and not operation0
-        second_min_term = operation3 & operation2 & (~ operation1) & (not operation0)
+        second_min_term = operation3 & operation2 & (~ operation1) & (~ operation0)
         # operation3 and operation2 and not operation1 and operation0
-        third_min_term = operation3 and operation2 and (not operation1) and operation0
+        third_min_term = operation3 & operation2 & (~ operation1) & operation0
         
-        self.__enable_mux = "1" if first_min_term or second_min_term or third_min_term else "0"
-        self.__select_bits = "1" if second_min_term or third_min_term else "0"
+        self.__enable_mux = first_min_term | second_min_term | third_min_term
+        self.__select_bits = str(second_min_term) + str(third_min_term)
         
     
     def __execute(self):

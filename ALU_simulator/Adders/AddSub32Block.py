@@ -19,17 +19,18 @@ class AddSub32Block:
         
     
     def __select_operation(self):
-        operation3 = True if int(self.__operation[0]) == 1 else False
-        operation2 = True if int(self.__operation[1]) == 1 else False
-        operation1 = True if int(self.__operation[2]) == 1 else False
+        operation3 = int(self.__operation[0])
+        operation2 = int(self.__operation[1])
+        operation1 = int(self.__operation[2])
         
         # not operation3 and not operation2 and operation1
-        first_min_term = (not operation3) and (not operation2) and operation1
+        first_min_term = (~ operation3) & (~ operation2) & operation1
         # not operation3 and operation2 and operation1
-        second_min_term = (not operation3) and operation2 and operation1
-        self.__enable_mux = "1" if first_min_term or second_min_term else "0"
-        self.__carry_in = "1" if second_min_term else "0"
-        self.__select_bits = "1" if second_min_term else "0"
+        second_min_term = (~ operation3) & operation2 & operation1
+        
+        self.__enable_mux = str(first_min_term | second_min_term)
+        self.__carry_in = str(second_min_term)
+        self.__select_bits = str(second_min_term)
     
         
     def __validate_input(self):
