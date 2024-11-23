@@ -12,6 +12,7 @@ class Shifter32Block:
         self.__output = ""
         self.__select_bits = ""
         self.__enable_mux = ""
+        self.__carry_in = ""
         self.__select_operation()
         self.__validate_input()
         self.__execute()
@@ -41,7 +42,6 @@ class Shifter32Block:
         operation1 = int(self.__operation[2]) == 1
         operation0 = int(self.__operation[3]) == 1
         
-        print(operation3, operation2, operation1, operation0)
         # not operation3 and not operation2 and not operation1
         first_min_term = (not operation3) & (not operation2) & (not operation1)
         # operation3 and operation2 and not operation1 and not operation0
@@ -49,12 +49,12 @@ class Shifter32Block:
         # operation3 and operation2 and not operation1 and operation0
         third_min_term = operation3 and operation2 and (not operation1) and operation0
         
+        self.__carry_in = str(int(third_min_term))
         self.__enable_mux = str(int(first_min_term or second_min_term or third_min_term))
         self.__select_bits = str(int(third_min_term)) + str(int(second_min_term))
         
     
     def __execute(self):
-        print(self.__enable_mux)
         reverse_output = Reverse32bit(self.__input_bits).get_output()
         msb_output = MSB(self.__input_bits).get_output()
         
@@ -64,7 +64,7 @@ class Shifter32Block:
             enable=self.__enable_mux
         ).get_output()
         
-        Cin = str(int(int(msb_output) and int(self.__select_bits[1])))
+        Cin = str(int(int(msb_output) and int(self.__carry_in)))
         self.__output = LeftShift32(self.__output, Cin, self.__shift_amount).get_output()
         reverse_output = Reverse32bit(self.__output).get_output()
         self.__output = Mux(
