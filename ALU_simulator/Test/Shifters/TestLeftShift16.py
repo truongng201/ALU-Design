@@ -17,9 +17,9 @@ class TestLeftShift16:
                 C = C % MOD
             
             if A < 0:
-                A = A + (1<<32)
+                A = A + MOD
             if C < 0:
-                C = C + (1<<32)
+                C = C + MOD
                 
             A = bin(A)[2:].zfill(32)
             C = bin(C)[2:].zfill(32)

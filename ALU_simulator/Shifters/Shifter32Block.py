@@ -8,6 +8,9 @@ class Shifter32Block:
         self.__shift_amount = shift_amount
         self.__operation = operation
         self.__output = ""
+        self.__select_bits = ""
+        self.__enable_mux = ""
+        self.__select_operation()
         self.__validate_input()
         self.__execute()
         
@@ -28,6 +31,23 @@ class Shifter32Block:
         for bit in self.__operation:
             if bit not in BIT_VALUE:
                 raise InvalidType("ShifterBlock")
+        
+    
+    def __select_operation(self):
+        operation3 = int(self.__operation[0])
+        operation2 = int(self.__operation[1])
+        operation1 = int(self.__operation[2])
+        operation0 = int(self.__operation[3])
+        
+        # not operation3 and not operation2 and not operation1
+        first_min_term = (~ operation3) & (~ operation2) & (~ operation1)
+        # operation3 and operation2 and not operation1 and not operation0
+        second_min_term = operation3 & operation2 & (~ operation1) & (not operation0)
+        # operation3 and operation2 and not operation1 and operation0
+        third_min_term = operation3 and operation2 and (not operation1) and operation0
+        
+        self.__enable_mux = "1" if first_min_term or second_min_term or third_min_term else "0"
+        self.__select_bits = "1" if second_min_term or third_min_term else "0"
         
     
     def __execute(self):

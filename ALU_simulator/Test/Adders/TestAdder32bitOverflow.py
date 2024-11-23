@@ -19,11 +19,11 @@ class TestAdder32bitOverflow:
                 V = 1
                 
             if A < 0:
-                A = A + (1<<32)
+                A = A + MOD
             if B < 0:
-                B = B + (1<<32)
+                B = B + MOD
             if C < 0:
-                C = C + (1<<32)
+                C = C + MOD
                 
             A = bin(A)[2:].zfill(32)
             B = bin(B)[2:].zfill(32)

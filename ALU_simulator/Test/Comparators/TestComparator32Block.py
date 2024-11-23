@@ -4,6 +4,7 @@ from ALU_simulator.Comparators.Comparator32Block import Comparator32Block
 
 MIN_INT = -2**31
 MAX_INT = 2**31 - 1
+MOD = 2**32
 
 class TestComparator32Block:
     def __init__(self):
@@ -22,9 +23,9 @@ class TestComparator32Block:
                 C = 1 if A > 0 else 0
             
             if A < 0:
-                A = A + (1<<32)
+                A = A + MOD
             if B < 0:
-                B = B + (1<<32)
+                B = B + MOD
             
                 
             A = bin(A)[2:].zfill(32)

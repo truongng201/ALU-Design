@@ -4,6 +4,7 @@ from ALU_simulator.Logical import Logical32Block
 
 MIN_INT = -2**31
 MAX_INT = 2**31 - 1
+MOD = 2**32
 
 class TestLogical32Block:
     def __init__(self):
@@ -22,11 +23,11 @@ class TestLogical32Block:
                 C = ~ (A | B)
             
             if A < 0:
-                A = A + (1<<32)
+                A = A + MOD
             if B < 0:
-                B = B + (1<<32)
+                B = B + MOD
             if C < 0:
-                C = C + (1<<32)
+                C = C + MOD
                 
             A = bin(A)[2:].zfill(32)
             B = bin(B)[2:].zfill(32)

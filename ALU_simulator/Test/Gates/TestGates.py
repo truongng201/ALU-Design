@@ -4,6 +4,7 @@ from ALU_simulator.Gates import *
 
 MIN_INT = -2**31
 MAX_INT = 2**31 - 1
+MOD = 2**32
 
 class TestGates:
     def __init__(self):
@@ -25,11 +26,11 @@ class TestGates:
         input_a = self.__input_a
         input_b = self.__input_b
         if input_a < 0:
-            input_a = input_a + (1<<32)
+            input_a = input_a + MOD
         if input_b < 0:
-            input_b = input_b + (1<<32)
+            input_b = input_b + MOD
         if C < 0:
-            C = C + (1<<32)
+            C = C + MOD
         C = bin(C)[2:].zfill(32)
         input_a = bin(input_a)[2:].zfill(32)
         input_b = bin(input_b)[2:].zfill(32)
@@ -43,11 +44,11 @@ class TestGates:
         input_a = self.__input_a
         input_b = self.__input_b
         if input_a < 0:
-            input_a = input_a + (1<<32)
+            input_a = input_a + MOD
         if input_b < 0:
-            input_b = input_b + (1<<32)
+            input_b = input_b + MOD
         if C < 0:
-            C = C + (1<<32)
+            C = C + MOD
         C = bin(C)[2:].zfill(32)
         input_a = bin(input_a)[2:].zfill(32)
         input_b = bin(input_b)[2:].zfill(32)
@@ -61,11 +62,11 @@ class TestGates:
         input_a = self.__input_a
         input_b = self.__input_b
         if input_a < 0:
-            input_a = input_a + (1<<32)
+            input_a = input_a + MOD
         if input_b < 0:
-            input_b = input_b + (1<<32)
+            input_b = input_b + MOD
         if C < 0:
-            C = C + (1<<32)
+            C = C + MOD
         C = bin(C)[2:].zfill(32)
         input_a = bin(input_a)[2:].zfill(32)
         input_b = bin(input_b)[2:].zfill(32)
@@ -79,11 +80,11 @@ class TestGates:
         input_a = self.__input_a
         input_b = self.__input_b
         if input_a < 0:
-            input_a = input_a + (1<<32)
+            input_a = input_a + MOD
         if input_b < 0:
-            input_b = input_b + (1<<32)
+            input_b = input_b + MOD
         if C < 0:
-            C = C + (1<<32)
+            C = C + MOD
         C = bin(C)[2:].zfill(32)
         input_a = bin(input_a)[2:].zfill(32)
         input_b = bin(input_b)[2:].zfill(32)
@@ -96,9 +97,9 @@ class TestGates:
         C = ~self.__input_a
         input_a = self.__input_a
         if input_a < 0:
-            input_a = input_a + (1<<32)
+            input_a = input_a + MOD
         if C < 0:
-            C = C + (1<<32)
+            C = C + MOD
         C = bin(C)[2:].zfill(32)
         input_a = bin(input_a)[2:].zfill(32)
         not_gate = Not(32, input_a).get_output()
@@ -111,11 +112,11 @@ class TestGates:
         input_a = self.__input_a
         input_b = self.__input_b
         if input_a < 0:
-            input_a = input_a + (1<<32)
+            input_a = input_a + MOD
         if input_b < 0:
-            input_b = input_b + (1<<32)
+            input_b = input_b + MOD
         if C < 0:
-            C = C + (1<<32)
+            C = C + MOD
         C = bin(C)[2:].zfill(32)
         input_a = bin(input_a)[2:].zfill(32)
         input_b = bin(input_b)[2:].zfill(32)
