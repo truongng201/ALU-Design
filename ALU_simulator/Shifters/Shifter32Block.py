@@ -1,6 +1,8 @@
 from ALU_simulator.utils import InvalidType, ALU_BIT_LENGTH, BIT_VALUE, SHIFT_AMOUNT_BIT_LENGTH, OPERATION_BIT_LENGTH
 from ALU_simulator.Shifters.MSB import MSB
 from ALU_simulator.Shifters.Reverse32bit import Reverse32bit
+from ALU_simulator.Shifters.LeftShift32 import LeftShift32
+from ALU_simulator.Plexers import Mux
 
 class Shifter32Block:
     def __init__(self, input_bits: str, shift_amount: str, operation: str):
@@ -34,25 +36,42 @@ class Shifter32Block:
         
     
     def __select_operation(self):
-        operation3 = int(self.__operation[0])
-        operation2 = int(self.__operation[1])
-        operation1 = int(self.__operation[2])
-        operation0 = int(self.__operation[3])
+        operation3 = int(self.__operation[0]) == 1
+        operation2 = int(self.__operation[1]) == 1
+        operation1 = int(self.__operation[2]) == 1
+        operation0 = int(self.__operation[3]) == 1
         
+        print(operation3, operation2, operation1, operation0)
         # not operation3 and not operation2 and not operation1
-        first_min_term = (~ operation3) & (~ operation2) & (~ operation1)
+        first_min_term = (not operation3) & (not operation2) & (not operation1)
         # operation3 and operation2 and not operation1 and not operation0
-        second_min_term = operation3 & operation2 & (~ operation1) & (~ operation0)
+        second_min_term = operation3 and operation2 and (not operation1) and (not operation0)
         # operation3 and operation2 and not operation1 and operation0
-        third_min_term = operation3 & operation2 & (~ operation1) & operation0
+        third_min_term = operation3 and operation2 and (not operation1) and operation0
         
-        self.__enable_mux = first_min_term | second_min_term | third_min_term
-        self.__select_bits = str(second_min_term) + str(third_min_term)
+        self.__enable_mux = str(int(first_min_term or second_min_term or third_min_term))
+        self.__select_bits = str(int(third_min_term)) + str(int(second_min_term))
         
     
     def __execute(self):
-        pass
+        print(self.__enable_mux)
+        reverse_output = Reverse32bit(self.__input_bits).get_output()
+        msb_output = MSB(self.__input_bits).get_output()
         
+        self.__output = Mux(
+            [self.__input_bits, reverse_output, reverse_output, None],
+            select_bit=self.__select_bits,
+            enable=self.__enable_mux
+        ).get_output()
+        
+        Cin = str(int(int(msb_output) and int(self.__select_bits[1])))
+        self.__output = LeftShift32(self.__output, Cin, self.__shift_amount).get_output()
+        reverse_output = Reverse32bit(self.__output).get_output()
+        self.__output = Mux(
+            [self.__output, reverse_output, reverse_output, None],
+            select_bit=self.__select_bits,
+            enable=self.__enable_mux
+        ).get_output()
     
     def get_output(self) -> str:
         return str(self.__output)
