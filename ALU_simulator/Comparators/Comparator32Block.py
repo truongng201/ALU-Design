@@ -35,7 +35,9 @@ class Comparator32Block:
         fourth_min_term = operation3 and operation2 and operation1 and operation0
         
         self.__enable_mux = str(int(first_min_term or second_min_term or third_min_term or fourth_min_term))
-        self.__select_bits = str(int(second_min_term | fourth_min_term)) + str(int(third_min_term | fourth_min_term))
+        second_or = str(int(second_min_term | fourth_min_term))
+        third_or = str(int(third_min_term | fourth_min_term))
+        self.__select_bits = third_or + second_or
 
 
     def __validate_input(self):

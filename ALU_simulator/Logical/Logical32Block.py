@@ -16,23 +16,23 @@ class Logical32Block:
         
     
     def __select_operation(self):
-        operation3 = int(self.__operation[0])
-        operation2 = int(self.__operation[1])
-        operation1 = int(self.__operation[2])
-        operation0 = int(self.__operation[3])
+        operation3 = int(self.__operation[0]) == 1
+        operation2 = int(self.__operation[1]) == 1
+        operation1 = int(self.__operation[2]) == 1
+        operation0 = int(self.__operation[3]) == 1
         
         # not operation3 and operation2 and not operation1 and operation0
-        first_min_term = (~ operation3) & operation2 & (~ operation1) & operation0
+        first_min_term = (not operation3) and operation2 and (not operation1) and operation0
         # operation3 and not operation2 and operation1 and operation0
-        second_min_term = operation3 & (~ operation2) & operation1 & operation0
+        second_min_term = operation3 and (not operation2) and operation1 and operation0
         # operation3 and not operation2 and operation1 and not operation0
-        third_min_term = operation3 & (~ operation2) & operation1 & (~ operation0)
+        third_min_term = operation3 and (not operation2) and operation1 and (not operation0)
         # not operation3 and operation2 and not operation1 and not operation0
-        fourth_min_term = (~ operation3) & operation2 & (~ operation1) & (~ operation0)
-
-        self.__enable_mux = str(first_min_term | second_min_term | third_min_term | fourth_min_term)
-        first_or = str(first_min_term | second_min_term)
-        second_or = str(second_min_term | third_min_term)
+        fourth_min_term = (not operation3) and operation2 and (not operation1) and (not operation0)
+        
+        self.__enable_mux = str(int(first_min_term or second_min_term or third_min_term or fourth_min_term))
+        first_or = str(int(first_min_term or second_min_term))
+        second_or = str(int(second_min_term or third_min_term))
         self.__select_bits = second_or + first_or
     
     
