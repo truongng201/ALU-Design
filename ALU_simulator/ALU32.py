@@ -3,7 +3,7 @@ from Adders import AddSub32Block
 from Comparators import Comparator32Block
 from Gates import Or
 from Logical import Logical32Block
-from Shifters import Shifter32Block
+# from Shifters import Shifter32Block
 
 class ALU32:
     def __init__(self, input_a: str, input_b: str, operation: str, shift_amount: str):
@@ -41,11 +41,11 @@ class ALU32:
         adder = AddSub32Block(self.__input_a, self.__input_b, self.__operation)
         comparator = Comparator32Block(self.__input_a, self.__input_b, self.__operation)
         logical = Logical32Block(self.__input_a, self.__input_b, self.__operation)
-        shifter = Shifter32Block(self.__input_b, self.__shift_amount, self.__operation)
+        # shifter = Shifter32Block(self.__input_b, self.__shift_amount, self.__operation)
         
         self.__output = Or(ALU_BIT_LENGTH, adder.get_output(), comparator.get_output())
         self.__output = Or(ALU_BIT_LENGTH, self.__output, logical.get_output())
-        self.__output = Or(ALU_BIT_LENGTH, self.__output, shifter.get_output())
+        # self.__output = Or(ALU_BIT_LENGTH, self.__output, shifter.get_output())
         self.__overflow = adder.get_overflow()
         
         

@@ -4,4 +4,3 @@ from ALU_simulator.Comparators.BitExtend1to32 import BitExtend1to32
 from ALU_simulator.Comparators.IsEqual0 import IsEqual0
 from ALU_simulator.Comparators.LessThanOrEqual0 import LessThanOrEqual0
 from ALU_simulator.Comparators.GreaterThan0 import GreaterThan0
-from ALU_simulator.Shifters.MSB import MSB

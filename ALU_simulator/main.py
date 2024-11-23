@@ -11,6 +11,7 @@ from ALU_simulator.Test.Adders import *
 from ALU_simulator.Test.Comparators import *
 from ALU_simulator.Test.Logical import *
 from ALU_simulator.Test.Gates import *
+from ALU_simulator.Test.Shifters import *
 
 try:
     print("-" * 50)
@@ -33,7 +34,6 @@ try:
     TestIsEqual0()
     TestBitExtend1to32()
     TestIsEqual()
-    TestMSB()
     TestLessThanOrEqual0()
     TestGreaterThan0()
     TestComparator32Block()
@@ -43,6 +43,9 @@ try:
     TestLogical32Block()
     print("--------- Logical: All test cases pass -----------")
     print()
+    print("-------- Shifters: Starting test cases -----------")
+    TestMSB()
+    TestLeftShift1()
     print("-" * 50)
     print("----- ALU Components: All test test cases --------")
     print("-" * 50)

@@ -1,4 +1,4 @@
-from ALU_simulator.Comparators import MSB
+from ALU_simulator.Shifters import MSB
 
 class TestMSB:
     def __init__(self):

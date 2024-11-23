@@ -6,3 +6,4 @@ from ALU_simulator.Shifters.LeftShift8 import LeftShift8
 from ALU_simulator.Shifters.LeftShift16 import LeftShift16
 from ALU_simulator.Shifters.LeftShift32 import LeftShift32
 from ALU_simulator.Shifters.Shifter32Block import Shifter32Block
+from ALU_simulator.Shifters.MSB import MSB

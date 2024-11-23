@@ -22,7 +22,7 @@ class LeftShift1:
         
         
     def __execute(self):
-        self.__output = self.__carry_in + self.__input_b[:31]
+        self.__output = self.__input_b[1:] + self.__carry_in
         
     
     def get_output(self) -> str:
