@@ -50,6 +50,7 @@ try:
     TestLeftShift4()
     TestLeftShift8()
     TestLeftShift16()
+    TestLeftShift32()
     print("-" * 50)
     print("----- ALU Components: All test test cases --------")
     print("-" * 50)
